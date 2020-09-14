@@ -1,3 +1,16 @@
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px;
+  color: #333;
+}
+</style>
+
 # Ansible Overview
 * is an open source tool
 * Ansible is developed by Michael Deehan ( a former RedHat employee )
