@@ -1,17 +1,8 @@
-<style>
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px;
-  color: #333;
-}
-</style>
 
+
+<font face = "Times New Roman" size = "5">Times New Roman
 # Ansible Overview
+</font>
 * is an open source tool
 * Ansible is developed by Michael Deehan ( a former RedHat employee )
 * Michael Deehan incorporated Ansible Inc and developed Ansible Core as an Open source tool
