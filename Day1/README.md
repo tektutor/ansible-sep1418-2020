@@ -6,9 +6,9 @@
 
 ## For example, a simple static inventory can be written as below
 
-[all]
-ubuntu ansible_user=ansible ansible_password=ansible ansible_host=192.168.112.131
-centos ansible_user=ansible ansible_password=ansible ansible_host=192.168.112.130
+    [all]
+    ubuntu ansible_user=ansible ansible_password=ansible ansible_host=192.168.112.131
+    centos ansible_user=ansible ansible_password=ansible ansible_host=192.168.112.130
 
 ### Note
 * all - indicates a built-in ansible inventory group
