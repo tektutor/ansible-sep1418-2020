@@ -40,7 +40,7 @@
 ## Automation
 * As automation is done by System Administrators, Developers and QA, the language choice (DSL) is crucial.
 * Though imperative languages are powerful it is not suitable as not everyone will find it easy to learn and work.
-* More code must be written to achieve the same stuff in imperative languages as compared to imperative languages.
+* More code must be written to achieve the same stuff in imperative languages as compared to declarative languages.
 
 Automation mainly has two parts
 <ul>
