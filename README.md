@@ -20,31 +20,38 @@
 
 # Language Types
 * Imperative
-> Java
-> C++
-> Shell Scripting
-> Windows Batch Scripts
-> Powershell
-> Python/Perl
-> Imperative are powerful languages with many programming features
-> Automation
-* What? -  you wanted to automate
-* How? - you need to write code to explain the logic that must be followed to perform the automation
+Java
+<ul>
+  <li>C++</li>
+  <li>Shell Scripting</li>
+  <li>Windows Batch Scripts</li>
+  <li>Powershell</li>
+  <li>Python/Perl</li>
+<li>Imperative are powerful languages with many programming features</li>
+</ul>
+Automation
+<ul>
+  <li>What? -  you wanted to automate</li>
+  <li>How? - you need to write code to explain the logic that must be followed to perform the automation</li>
+</ul
 
 * Declarative
-
-** Ansible YAML Script is declarative
-** You just need mention what you wanted to automate
-** Ansible will take care of the how part(logic)
+<ul>
+  <li>Ansible YAML Script is declarative</li>
+  <li>You just need mention what you wanted to automate</li>
+  <li>Ansible will take care of the how part(logic)</li>
+<ul>
 
 # Ansible Alternates
-* Puppet - Client/Server Architecture
-** Puppet Proprietary Agent must be installed on the Nodes(Servers) managed by Puppet
-** Pull based architecture
-* Chef - Client/Server Architecture
-** Chef Proprietary Agent must be installed on the Nodes(Servers) managed by Chef
-** Pull based architecture
-* Salt/SaltStack
+<ul>
+  <li>Puppet - Client/Server Architecture</li>
+  <li>Puppet Proprietary Agent must be installed on the Nodes(Servers) managed by Puppet</li>
+  <li>Pull based architecture</li>
+  <li>Chef - Client/Server Architecture</li>
+  <li>Chef Proprietary Agent must be installed on the Nodes(Servers) managed by Chef</li>
+  <li>Pull based architecture</li>
+  <li>Salt/SaltStack</li>
+</ul>
 
 # Installing SSH Server in Ubuntu Ansible Node
 
