@@ -1,8 +1,6 @@
 
 
-<font face = "Times New Roman" size = "5">Times New Roman
 # Ansible Overview
-</font>
 * is an open source tool
 * Ansible is developed by Michael Deehan ( a former RedHat employee )
 * Michael Deehan incorporated Ansible Inc and developed Ansible Core as an Open source tool
