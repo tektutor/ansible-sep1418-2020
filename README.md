@@ -59,6 +59,9 @@ Automation mainly has two parts
   <li>Salt/SaltStack</li>
 </ul>
 
+# Puppet/Chef High-Level Architecture
+<img src=https://github.com/tektutor/ansible-sep1418-2020/blob/master/PuppetChefArchitecture.png />
+
 # Installing SSH Server in Ubuntu Ansible Node
     apt update && apt install -y openssh-server
     
