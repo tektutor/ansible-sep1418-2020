@@ -48,4 +48,37 @@
 ** Pull based architecture
 * Salt/SaltStack
 
+# Installing SSH Server in Ubuntu Ansible Node
+
+apt update && apt install -y openssh-server
+
+## You may check the SSH Server status as shown below
+
+service ssh status
+
+## You may start the SSH Server in case not running already
+
+service ssh start
+
+
+# Verifying if ansible nodes are reachable for Ansible Controller Machine(ACM)
+
+## SSH into CentOS Ansible Node ( You need to type the password when prompted )
+
+ssh anisble@192.168.112.130
+
+Assumptions
+* SSH User - anisble
+* IP Address of CentOS Ansible Node is 192.168.112.130
+* Password is Abridge@123
+
+## SSH into Ubuntu Ansible Node ( You need to type the password when prompted )
+
+ssh ansible@192.168.112.130
+
+Assumptions
+* SSH User - ansible
+* IP Address of Ubuntu Ansible Node is 192.168.112.131
+* Password is Abridge@123
+
 
