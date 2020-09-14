@@ -19,27 +19,28 @@
 * Ansible Tower is an Enterprise Tool developed by RedHat on top of Ansible Core
 
 # Language Types
-* Imperative
-Java
+## Imperative
 <ul>
+  <li>Java</li>
   <li>C++</li>
   <li>Shell Scripting</li>
   <li>Windows Batch Scripts</li>
   <li>Powershell</li>
   <li>Python/Perl</li>
-<li>Imperative are powerful languages with many programming features</li>
+  <li>Imperative are powerful languages with many programming features</li>
 </ul>
-Automation
+
+## Automation
 <ul>
-  <li>What? -  you wanted to automate</li>
+  <li>What? - what you wanted to automate</li>
   <li>How? - you need to write code to explain the logic that must be followed to perform the automation</li>
 </ul
 
-* Declarative
+## Declarative
 <ul>
-  <li>Ansible YAML Script is declarative</li>
-  <li>You just need mention what you wanted to automate</li>
-  <li>Ansible will take care of the how part(logic)</li>
+  <li>Ansible Playbook is declarative</li>
+  <li>What? -In declarative language, you just need to mention what you wanted to automate</li>
+  <li>How? - Ansible will take care of the how part(logic)</li>
 <ul>
 
 # Ansible Alternates
@@ -54,36 +55,27 @@ Automation
 </ul>
 
 # Installing SSH Server in Ubuntu Ansible Node
-
-apt update && apt install -y openssh-server
+    apt update && apt install -y openssh-server
 
 ## You may check the SSH Server status as shown below
-
-service ssh status
+    service ssh status
 
 ## You may start the SSH Server in case not running already
-
-service ssh start
-
+    service ssh start
 
 # Verifying if ansible nodes are reachable for Ansible Controller Machine(ACM)
-
 ## SSH into CentOS Ansible Node ( You need to type the password when prompted )
+    ssh anisble@192.168.112.130
 
-ssh anisble@192.168.112.130
-
-Assumptions
+### Assumptions
 * SSH User - anisble
 * IP Address of CentOS Ansible Node is 192.168.112.130
 * Password is Abridge@123
 
 ## SSH into Ubuntu Ansible Node ( You need to type the password when prompted )
+    ssh ansible@192.168.112.130
 
-ssh ansible@192.168.112.130
-
-Assumptions
+### Assumptions
 * SSH User - ansible
 * IP Address of Ubuntu Ansible Node is 192.168.112.131
 * Password is Abridge@123
-
-
