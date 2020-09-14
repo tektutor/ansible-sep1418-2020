@@ -62,6 +62,10 @@ Automation mainly has two parts
 # Puppet/Chef High-Level Architecture
 <img src=https://github.com/tektutor/ansible-sep1418-2020/blob/master/PuppetChefArchitecture.png />
 
+
+# Ansible High-Level Architecture
+<img src=https://github.com/tektutor/ansible-sep1418-2020/blob/master/AnsibleArchitecture.png />
+
 # Installing SSH Server in Ubuntu Ansible Node
     apt update && apt install -y openssh-server
     
