@@ -30,18 +30,23 @@
   <li>Imperative are powerful languages with many programming features</li>
 </ul>
 
-## Automation
-<ul>
-  <li>What? - what you wanted to automate</li>
-  <li>How? - you need to write code to explain the logic that must be followed to perform the automation</li>
-</ul
-
 ## Declarative
 <ul>
   <li>Ansible Playbook is declarative</li>
   <li>What? -In declarative language, you just need to mention what you wanted to automate</li>
   <li>How? - Ansible will take care of the how part(logic)</li>
+</ul>
+
+## Automation
+* As automation is done by System Administrators, Developers and QA, the language choice (DSL) is crucial.
+* Though imperative languages are powerful it is not suitable as not everyone will find it easy to learn and work.
+* More code must be written to achieve the same stuff in imperative languages as compared to imperative languages.
+
+Automation mainly has two parts
 <ul>
+  <li>What? - what you wanted to automate</li>
+  <li>How? - you need to write code to explain the logic that must be followed to perform the automation</li>
+</ul
 
 # Ansible Alternates
 <ul>
@@ -56,9 +61,18 @@
 
 # Installing SSH Server in Ubuntu Ansible Node
     apt update && apt install -y openssh-server
+    
+# Installing SSH Server in CentOS Ansible Node
+    yum install -y epel-release
+    yum install -y openssh-server
 
-## You may check the SSH Server status as shown below
+## You may chek the SSH Server status in CentOS as shown below
+    systemctl status sshd
+You are expected to see to Active(green) if SSH Service is running normally.
+
+## You may check the SSH Server status in Ubuntu as shown below
     service ssh status
+You are expected to see to Active(green) if SSH Service is running normally.
 
 ## You may start the SSH Server in case not running already
     service ssh start
