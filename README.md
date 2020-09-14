@@ -20,14 +20,14 @@
 
 # Language Types
 * Imperative
-. Java
-. C++
-- Shell Scripting
-- Windows Batch Scripts
-- Powershell
-- Python/Perl
-- Imperative are powerful languages with many programming features
-- Automation
+> Java
+> C++
+> Shell Scripting
+> Windows Batch Scripts
+> Powershell
+> Python/Perl
+> Imperative are powerful languages with many programming features
+> Automation
 * What? -  you wanted to automate
 * How? - you need to write code to explain the logic that must be followed to perform the automation
 
