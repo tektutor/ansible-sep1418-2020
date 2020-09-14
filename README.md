@@ -20,8 +20,8 @@
 
 # Language Types
 * Imperative
-- Java
-- C++
+. Java
+. C++
 - Shell Scripting
 - Windows Batch Scripts
 - Powershell
