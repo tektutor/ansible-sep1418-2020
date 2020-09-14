@@ -1,37 +1,35 @@
 # Ansible Overview
 * is an open source tool
+* Ansible is developed by Michael Deehan ( a former RedHat employee )
+* Michael Deehan incorporated Ansible Inc and developed Ansible Core as an Open source tool
 * is developed in Python
 * is an agentless tool
 * is a configuration management tool
-** can automate software installations
-** can automate system administration activities
-** can help in automating user/system configuration
+* is used to automate software installations
+* is used to automate system administration activities
+* helps in automating user/system configuration
 * to automate it is not required to learn Python
 * Domain Specific Language (DSL)
-** YAML - Yet Another Markup Language
-*** a superset of JSON - JavaScript Object Notation
-* developed by Michael Deehan
-** a former employee of RedHat
-** incorporated a company Ansible Inc
-* Redhat acquired Ansible Inc
-* IBM acquuired RedHat
-* two variants
-** Ansible Core (Open Source - Command line Tool)
-** Ansible Tower (Commercial Enterprise Tool - Web Interface)
+* DSL used by Ansible is YAML ( Yet Another Markup Language )
+* YAML is a superset of JSON ( JavaScript Object Notation )
+* RedHat acquired Ansible Inc, hence Ansible Core became RedHat's product
+* IBM acquired RedHat, hence Ansible and Ansible Tower became IBM's product
+* Ansible comes in flavours ( Ansible Core and Ansible Tower)
+* Ansible Core is an Open Source Tool developed by Ansible Inc
+* Ansible Tower is an Enterprise Tool developed by RedHat on top of Ansible Core
 
 # Language Types
 * Imperative
-
-** Java
-** C++
-** Shell Scripting
-** Windows Batch Scripts
-** Powershell
-** Python/Perl
-** Imperative are powerful languages with many programming features
-** Automation
-*** What? -  you wanted to automate
-*** How? - you need to write code to explain the logic that must be followed to perform the automation
+- Java
+- C++
+- Shell Scripting
+- Windows Batch Scripts
+- Powershell
+- Python/Perl
+- Imperative are powerful languages with many programming features
+- Automation
+* What? -  you wanted to automate
+* How? - you need to write code to explain the logic that must be followed to perform the automation
 
 * Declarative
 
