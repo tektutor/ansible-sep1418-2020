@@ -7,3 +7,4 @@ hosts - inventory file
 all -  every machine under the all group of inventory file
 -m - indicates ansible module
 ping - ping.py is an ansible module
+

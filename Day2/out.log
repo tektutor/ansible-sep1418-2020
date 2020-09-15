@@ -1,0 +1,619 @@
+ansible-playbook 2.9.10
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Aug  7 2019, 00:51:29) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
+Using /etc/ansible/ansible.cfg as config file
+setting up inventory plugins
+host_list declined parsing /root/Ansible/Day2/inventory as it did not pass its verify_file() method
+script declined parsing /root/Ansible/Day2/inventory as it did not pass its verify_file() method
+auto declined parsing /root/Ansible/Day2/inventory as it did not pass its verify_file() method
+Parsed /root/Ansible/Day2/inventory inventory source with ini plugin
+Loading callback plugin default of type stdout, v2.0 from /usr/lib/python2.7/site-packages/ansible/plugins/callback/default.pyc
+
+PLAYBOOK: install-nginx.yml ***********************************************************************************
+Positional arguments: install-nginx.yml
+become_method: sudo
+inventory: (u'/root/Ansible/Day2/inventory',)
+forks: 5
+tags: (u'all',)
+verbosity: 4
+connection: smart
+timeout: 10
+1 plays in install-nginx.yml
+
+PLAY [This play will install, configure and deploy custom web page into nginx web server] *********************
+
+TASK [Gathering Facts] ****************************************************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:1
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837 && echo ansible-tmp-1600160811.61-57471-269364403801837="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160811.61-57471-269364403801837=/home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<ubuntu> Attempting python interpreter discovery
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo PLATFORM; uname; echo FOUND; command -v '"'"'"'"'"'"'"'"'/usr/bin/python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.5'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/libexec/platform-python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/bin/python3'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python'"'"'"'"'"'"'"'"'; echo ENDFOUND && sleep 0'"'"''
+<192.168.112.131> (0, 'PLATFORM\nLinux\nFOUND\n/usr/bin/python3.6\n/usr/bin/python3\nENDFOUND\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'/usr/bin/python3.6 && sleep 0'"'"''
+<192.168.112.131> (0, '{"platform_dist_result": ["Ubuntu", "18.04", "bionic"], "osrelease_content": "NAME=\\"Ubuntu\\"\\nVERSION=\\"18.04 LTS (Bionic Beaver)\\"\\nID=ubuntu\\nID_LIKE=debian\\nPRETTY_NAME=\\"Ubuntu 18.04 LTS\\"\\nVERSION_ID=\\"18.04\\"\\nHOME_URL=\\"https://www.ubuntu.com/\\"\\nSUPPORT_URL=\\"https://help.ubuntu.com/\\"\\nBUG_REPORT_URL=\\"https://bugs.launchpad.net/ubuntu/\\"\\nPRIVACY_POLICY_URL=\\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\\"\\nVERSION_CODENAME=bionic\\nUBUNTU_CODENAME=bionic\\n"}\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp5UNZ6J TO /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp5UNZ6J /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp5UNZ6J\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:10 O:196608 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:11 O:229376 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:12 O:262144 S:2486\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 32768 bytes at 163840\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 10 32768 bytes at 196608\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 11 32768 bytes at 229376\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 12 2486 bytes at 262144\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/ /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=tblqflnxmycmbrykmxdqdpbnrnwvohwc] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-tblqflnxmycmbrykmxdqdpbnrnwvohwc ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"ansible_facts": {"ansible_fips": false, "ansible_system_capabilities_enforced": "True", "ansible_system_capabilities": ["cap_chown", "cap_dac_override", "cap_dac_read_search", "cap_fowner", "cap_fsetid", "cap_kill", "cap_setgid", "cap_setuid", "cap_setpcap", "cap_linux_immutable", "cap_net_bind_service", "cap_net_broadcast", "cap_net_admin", "cap_net_raw", "cap_ipc_lock", "cap_ipc_owner", "cap_sys_module", "cap_sys_rawio", "cap_sys_chroot", "cap_sys_ptrace", "cap_sys_pacct", "cap_sys_admin", "cap_sys_boot", "cap_sys_nice", "cap_sys_resource", "cap_sys_time", "cap_sys_tty_config", "cap_mknod", "cap_lease", "cap_audit_write", "cap_audit_control", "cap_setfcap", "cap_mac_override", "cap_mac_admin", "cap_syslog", "cap_wake_alarm", "cap_block_suspend", "cap_audit_read+ep"], "ansible_user_id": "root", "ansible_user_uid": 0, "ansible_user_gid": 0, "ansible_user_gecos": "root", "ansible_user_dir": "/root", "ansible_user_shell": "/bin/bash", "ansible_real_user_id": 0, "ansible_effective_user_id": 0, "ansible_real_group_id": 0, "ansible_effective_group_id": 0, "ansible_virtualization_role": "guest", "ansible_virtualization_type": "VMware", "ansible_is_chroot": false, "ansible_lsb": {"id": "Ubuntu", "description": "Ubuntu 18.04 LTS", "release": "18.04", "codename": "bionic", "major_release": "18"}, "ansible_apparmor": {"status": "enabled"}, "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDjzkKOActXXSJsZgLs5cdrpibr8WWT1xUlGnp58yFR6ENfyy+GngI9GyeCxwDVLsEBQp02iQHtGrypx1BuUdO375rfDYwISUVGJmL4aZeeeaPEdAldypJnONHKPEpP020E2JVB95IFCGMl4xs2Y6nwLRlA24fwIZIE581DTJ/OlMY8+U+906/D+45aKmegtxGlZV6dwcEMYjtJ3wGNIlm5ZPQUHbugQANMBC5eNl4Grj+vjw0C396TfE9Q5eIUUYrpFm3uNQKsgnElbD/nZdnSIHGcKMij7yC7GcK4BUNYnE7vZLgD6YWTHsnVAlkaINTVXBehDG0zAzjSZiRI+V5n", "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFpx9dwT4TKYMail4y69d6DOQIJv+46fPbwdpPeZm39HHLGe084lcCEv7RF1MIWErgcJPk1QgKfw1tIpJ8qdOAU=", "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIErpiAE4NeeOrcpwEFZfjcPQrdB/kR/P1MqQrndG2kdr", "ansible_hostnqn": "", "ansible_system": "Linux", "ansible_kernel": "4.15.0-115-generic", "ansible_kernel_version": "#116-Ubuntu SMP Wed Aug 26 14:04:49 UTC 2020", "ansible_machine": "x86_64", "ansible_python_version": "3.6.9", "ansible_fqdn": "ansible-virtual-machine", "ansible_hostname": "ansible-virtual-machine", "ansible_nodename": "ansible-virtual-machine", "ansible_domain": "", "ansible_userspace_bits": "64", "ansible_architecture": "x86_64", "ansible_userspace_architecture": "x86_64", "ansible_machine_id": "99a8f6acfe414c549fbf580bcea18046", "ansible_distribution": "Ubuntu", "ansible_distribution_release": "bionic", "ansible_distribution_version": "18.04", "ansible_distribution_major_version": "18", "ansible_distribution_file_path": "/etc/os-release", "ansible_distribution_file_variety": "Debian", "ansible_distribution_file_parsed": true, "ansible_os_family": "Debian", "ansible_dns": {"nameservers": ["127.0.0.53"], "search": ["localdomain"]}, "ansible_cmdline": {"BOOT_IMAGE": "/boot/vmlinuz-4.15.0-115-generic", "root": "UUID=adb1a18a-e04f-4081-b3ad-dd80582923dd", "ro": true, "quiet": true, "splash": true}, "ansible_proc_cmdline": {"BOOT_IMAGE": "/boot/vmlinuz-4.15.0-115-generic", "root": "UUID=adb1a18a-e04f-4081-b3ad-dd80582923dd", "ro": true, "quiet": true, "splash": true}, "ansible_selinux": {"status": "Missing selinux Python library"}, "ansible_selinux_python_present": false, "ansible_iscsi_iqn": "", "ansible_fibre_channel_wwn": [], "ansible_env": {"SUDO_GID": "1000", "MAIL": "/var/mail/root", "USER": "root", "HOME": "/root", "SUDO_UID": "1000", "LOGNAME": "root", "TERM": "xterm-256color", "USERNAME": "root", "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin", "LANG": "en_IN", "SUDO_COMMAND": "/bin/sh -c echo BECOME-SUCCESS-tblqflnxmycmbrykmxdqdpbnrnwvohwc ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/AnsiballZ_setup.py", "SHELL": "/bin/bash", "SUDO_USER": "ansible", "PWD": "/home/ansible"}, "ansible_date_time": {"year": "2020", "month": "09", "weekday": "Tuesday", "weekday_number": "2", "weeknumber": "37", "day": "15", "hour": "14", "minute": "36", "second": "57", "epoch": "1600160817", "date": "2020-09-15", "time": "14:36:57", "iso8601_micro": "2020-09-15T09:06:57.307107Z", "iso8601": "2020-09-15T09:06:57Z", "iso8601_basic": "20200915T143657306847", "iso8601_basic_short": "20200915T143657", "tz": "IST", "tz_offset": "+0530"}, "ansible_processor": ["0", "AuthenticAMD", "AMD Opteron(tm) Processor 6128", "1", "AuthenticAMD", "AMD Opteron(tm) Processor 6128"], "ansible_processor_count": 2, "ansible_processor_cores": 1, "ansible_processor_threads_per_core": 1, "ansible_processor_vcpus": 2, "ansible_memtotal_mb": 5939, "ansible_memfree_mb": 3092, "ansible_swaptotal_mb": 1897, "ansible_swapfree_mb": 1897, "ansible_memory_mb": {"real": {"total": 5939, "used": 2847, "free": 3092}, "nocache": {"free": 4612, "used": 1327}, "swap": {"total": 1897, "free": 1897, "used": 0, "cached": 0}}, "ansible_bios_date": "04/13/2018", "ansible_bios_version": "6.00", "ansible_form_factor": "Other", "ansible_product_name": "VMware Virtual Platform", "ansible_product_serial": "VMware-56 4d 31 86 e8 6c c3 8f-35 16 df 82 3a f5 4f f6", "ansible_product_uuid": "86314D56-6CE8-8FC3-3516-DF823AF54FF6", "ansible_product_version": "None", "ansible_system_vendor": "VMware, Inc.", "ansible_devices": {"loop1": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "127160", "sectorsize": "512", "size": "62.09 MB", "host": "", "holders": []}, "loop8": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "288064", "sectorsize": "512", "size": "140.66 MB", "host": "", "holders": []}, "loop15": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "0", "sectorsize": "512", "size": "0.00 Bytes", "host": "", "holders": []}, "loop6": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "25008", "sectorsize": "512", "size": "12.21 MB", "host": "", "holders": []}, "loop13": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "552", "sectorsize": "512", "size": "276.00 KB", "host": "", "holders": []}, "loop4": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "42976", "sectorsize": "512", "size": "20.98 MB", "host": "", "holders": []}, "loop11": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "4992", "sectorsize": "512", "size": "2.44 MB", "host": "", "holders": []}, "sr0": {"virtual": 1, "links": {"ids": ["ata-VMware_Virtual_SATA_CDRW_Drive_01000000000000000001"], "uuids": [], "labels": [], "masters": []}, "vendor": "NECVMWar", "model": "VMware SATA CD01", "sas_address": null, "sas_device_handle": null, "removable": "1", "support_discard": "0", "partitions": {}, "rotational": "1", "scheduler_mode": "cfq", "sectors": "2097151", "sectorsize": "512", "size": "1024.00 MB", "host": "SATA controller: VMware SATA AHCI controller", "holders": []}, "loop2": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "177264", "sectorsize": "512", "size": "86.55 MB", "host": "", "holders": []}, "loop0": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "6664", "sectorsize": "512", "size": "3.25 MB", "host": "", "holders": []}, "loop9": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "523400", "sectorsize": "512", "size": "255.57 MB", "host": "", "holders": []}, "loop7": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "3304", "sectorsize": "512", "size": "1.61 MB", "host": "", "holders": []}, "sda": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": "VMware,", "model": "VMware Virtual S", "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "0", "partitions": {"sda1": {"links": {"ids": [], "uuids": ["adb1a18a-e04f-4081-b3ad-dd80582923dd"], "labels": [], "masters": []}, "start": "2048", "sectors": "83881984", "sectorsize": 512, "size": "40.00 GB", "uuid": "adb1a18a-e04f-4081-b3ad-dd80582923dd", "holders": []}}, "rotational": "1", "scheduler_mode": "cfq", "sectors": "83886080", "sectorsize": "512", "size": "40.00 GB", "host": "SCSI storage controller: LSI Logic / Symbios Logic 53c1030 PCI-X Fusion-MPT Dual Ultra320 SCSI (rev 01)", "holders": []}, "loop14": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "286800", "sectorsize": "512", "size": "140.04 MB", "host": "", "holders": []}, "loop5": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "113296", "sectorsize": "512", "size": "55.32 MB", "host": "", "holders": []}, "loop12": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "1912", "sectorsize": "512", "size": "956.00 KB", "host": "", "holders": []}, "loop3": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "4440", "sectorsize": "512", "size": "2.17 MB", "host": "", "holders": []}, "loop10": {"virtual": 1, "links": {"ids": [], "uuids": [], "labels": [], "masters": []}, "vendor": null, "model": null, "sas_address": null, "sas_device_handle": null, "removable": "0", "support_discard": "4096", "partitions": {}, "rotational": "1", "scheduler_mode": "none", "sectors": "197888", "sectorsize": "512", "size": "96.62 MB", "host": "", "holders": []}}, "ansible_device_links": {"ids": {"sr0": ["ata-VMware_Virtual_SATA_CDRW_Drive_01000000000000000001"]}, "uuids": {"sda1": ["adb1a18a-e04f-4081-b3ad-dd80582923dd"]}, "labels": {}, "masters": {}}, "ansible_uptime_seconds": 88255, "ansible_mounts": [{"mount": "/", "device": "/dev/sda1", "fstype": "ext4", "options": "rw,relatime,errors=remount-ro,data=ordered", "size_total": 42005135360, "size_available": 31400058880, "block_size": 4096, "block_total": 10255160, "block_available": 7666030, "block_used": 2589130, "inode_total": 2621440, "inode_available": 2404984, "inode_used": 216456, "uuid": "adb1a18a-e04f-4081-b3ad-dd80582923dd"}, {"mount": "/snap/gnome-system-monitor/36", "device": "/dev/loop0", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 3538944, "size_available": 0, "block_size": 131072, "block_total": 27, "block_available": 0, "block_used": 27, "inode_total": 669, "inode_available": 0, "inode_used": 669, "uuid": "N/A"}, {"mount": "/snap/gtk-common-themes/1506", "device": "/dev/loop1", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 65142784, "size_available": 0, "block_size": 131072, "block_total": 497, "block_available": 0, "block_used": 497, "inode_total": 62342, "inode_available": 0, "inode_used": 62342, "uuid": "N/A"}, {"mount": "/snap/core/4486", "device": "/dev/loop2", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 90832896, "size_available": 0, "block_size": 131072, "block_total": 693, "block_available": 0, "block_used": 693, "inode_total": 12819, "inode_available": 0, "inode_used": 12819, "uuid": "N/A"}, {"mount": "/snap/gnome-system-monitor/148", "device": "/dev/loop3", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 2359296, "size_available": 0, "block_size": 131072, "block_total": 18, "block_available": 0, "block_used": 18, "inode_total": 784, "inode_available": 0, "inode_used": 784, "uuid": "N/A"}, {"mount": "/snap/gnome-logs/25", "device": "/dev/loop4", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 22020096, "size_available": 0, "block_size": 131072, "block_total": 168, "block_available": 0, "block_used": 168, "inode_total": 1783, "inode_available": 0, "inode_used": 1783, "uuid": "N/A"}, {"mount": "/snap/core18/1885", "device": "/dev/loop5", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 58064896, "size_available": 0, "block_size": 131072, "block_total": 443, "block_available": 0, "block_used": 443, "inode_total": 10775, "inode_available": 0, "inode_used": 10775, "uuid": "N/A"}, {"mount": "/snap/gnome-characters/69", "device": "/dev/loop6", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 12845056, "size_available": 0, "block_size": 131072, "block_total": 98, "block_available": 0, "block_used": 98, "inode_total": 1585, "inode_available": 0, "inode_used": 1585, "uuid": "N/A"}, {"mount": "/snap/gnome-calculator/154", "device": "/dev/loop7", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 1703936, "size_available": 0, "block_size": 131072, "block_total": 13, "block_available": 0, "block_used": 13, "inode_total": 1244, "inode_available": 0, "inode_used": 1244, "uuid": "N/A"}, {"mount": "/snap/gnome-3-26-1604/100", "device": "/dev/loop8", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 147587072, "size_available": 0, "block_size": 131072, "block_total": 1126, "block_available": 0, "block_used": 1126, "inode_total": 27624, "inode_available": 0, "inode_used": 27624, "uuid": "N/A"}, {"mount": "/snap/gnome-3-34-1804/36", "device": "/dev/loop9", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 268042240, "size_available": 0, "block_size": 131072, "block_total": 2045, "block_available": 0, "block_used": 2045, "inode_total": 24339, "inode_available": 0, "inode_used": 24339, "uuid": "N/A"}, {"mount": "/snap/core/9804", "device": "/dev/loop10", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 101318656, "size_available": 0, "block_size": 131072, "block_total": 773, "block_available": 0, "block_used": 773, "inode_total": 12796, "inode_available": 0, "inode_used": 12796, "uuid": "N/A"}, {"mount": "/snap/gnome-calculator/748", "device": "/dev/loop11", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 2621440, "size_available": 0, "block_size": 131072, "block_total": 20, "block_available": 0, "block_used": 20, "inode_total": 1351, "inode_available": 0, "inode_used": 1351, "uuid": "N/A"}, {"mount": "/snap/gnome-logs/100", "device": "/dev/loop12", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 1048576, "size_available": 0, "block_size": 131072, "block_total": 8, "block_available": 0, "block_used": 8, "inode_total": 355, "inode_available": 0, "inode_used": 355, "uuid": "N/A"}, {"mount": "/snap/gnome-characters/550", "device": "/dev/loop13", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 393216, "size_available": 0, "block_size": 131072, "block_total": 3, "block_available": 0, "block_used": 3, "inode_total": 230, "inode_available": 0, "inode_used": 230, "uuid": "N/A"}, {"mount": "/snap/gnome-3-26-1604/59", "device": "/dev/loop14", "fstype": "squashfs", "options": "ro,nodev,relatime", "size_total": 146931712, "size_available": 0, "block_size": 131072, "block_total": 1121, "block_available": 0, "block_used": 1121, "inode_total": 27660, "inode_available": 0, "inode_used": 27660, "uuid": "N/A"}], "ansible_python": {"version": {"major": 3, "minor": 6, "micro": 9, "releaselevel": "final", "serial": 0}, "version_info": [3, 6, 9, "final", 0], "executable": "/usr/bin/python3", "has_sslcontext": true, "type": "cpython"}, "ansible_local": {}, "ansible_interfaces": ["lo", "ens33"], "ansible_ens33": {"device": "ens33", "macaddress": "00:0c:29:f5:4f:f6", "mtu": 1500, "active": true, "module": "e1000", "type": "ether", "pciid": "0000:02:01.0", "speed": 1000, "promisc": false, "ipv4": {"address": "192.168.112.131", "broadcast": "192.168.112.255", "netmask": "255.255.255.0", "network": "192.168.112.0"}, "ipv6": [{"address": "fe80::a2ac:6e0a:5eda:d1d5", "prefix": "64", "scope": "link"}]}, "ansible_lo": {"device": "lo", "mtu": 65536, "active": true, "type": "loopback", "promisc": false, "ipv4": {"address": "127.0.0.1", "broadcast": "host", "netmask": "255.0.0.0", "network": "127.0.0.0"}, "ipv6": [{"address": "::1", "prefix": "128", "scope": "host"}]}, "ansible_default_ipv4": {"gateway": "192.168.112.2", "interface": "ens33", "address": "192.168.112.131", "broadcast": "192.168.112.255", "netmask": "255.255.255.0", "network": "192.168.112.0", "macaddress": "00:0c:29:f5:4f:f6", "mtu": 1500, "type": "ether", "alias": "ens33"}, "ansible_default_ipv6": {}, "ansible_all_ipv4_addresses": ["192.168.112.131"], "ansible_all_ipv6_addresses": ["fe80::a2ac:6e0a:5eda:d1d5"], "ansible_pkg_mgr": "apt", "ansible_service_mgr": "systemd", "gather_subset": ["all"], "module_setup": true}, "invocation": {"module_args": {"gather_timeout": 10, "gather_subset": ["all"], "filter": "*", "fact_path": "/etc/ansible/facts.d"}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160811.61-57471-269364403801837/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [ubuntu]
+META: ran handlers
+
+TASK [Install nginx web server in Ubuntu] *********************************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:9
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994 && echo ansible-tmp-1600160819.12-57513-63659408473994="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160819.12-57513-63659408473994=/home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/packaging/os/apt.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpyoqflm TO /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/AnsiballZ_apt.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpyoqflm /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/AnsiballZ_apt.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpyoqflm\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/AnsiballZ_apt.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:21341\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 21341 bytes at 131072\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/ /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/AnsiballZ_apt.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=mzpbzpvijawagvvpddfhfolqjacmaxku] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-mzpbzpvijawagvvpddfhfolqjacmaxku ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/AnsiballZ_apt.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"changed": false, "cache_updated": true, "cache_update_time": 1600160830, "invocation": {"module_args": {"name": "nginx", "state": "latest", "update_cache": true, "package": ["nginx"], "cache_valid_time": 0, "purge": false, "force": false, "dpkg_options": "force-confdef,force-confold", "autoremove": false, "autoclean": false, "only_upgrade": false, "force_apt_get": false, "allow_unauthenticated": false, "deb": null, "default_release": null, "install_recommends": null, "upgrade": null, "policy_rc_d": null}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160819.12-57513-63659408473994/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [ubuntu] => {
+    "cache_update_time": 1600160830, 
+    "cache_updated": true, 
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "allow_unauthenticated": false, 
+            "autoclean": false, 
+            "autoremove": false, 
+            "cache_valid_time": 0, 
+            "deb": null, 
+            "default_release": null, 
+            "dpkg_options": "force-confdef,force-confold", 
+            "force": false, 
+            "force_apt_get": false, 
+            "install_recommends": null, 
+            "name": "nginx", 
+            "only_upgrade": false, 
+            "package": [
+                "nginx"
+            ], 
+            "policy_rc_d": null, 
+            "purge": false, 
+            "state": "latest", 
+            "update_cache": true, 
+            "upgrade": null
+        }
+    }
+}
+
+TASK [Configure nginx web root folder in Ubuntu] **************************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:12
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586 && echo ansible-tmp-1600160841.79-57557-245653267758586="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160841.79-57557-245653267758586=/home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/stat.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpYZfe5h TO /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_stat.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpYZfe5h /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_stat.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpYZfe5h\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_stat.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:19794\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 19794 bytes at 98304\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/ /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_stat.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=oufikpgebqjmvdbgextojuwkvphyafnb] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-oufikpgebqjmvdbgextojuwkvphyafnb ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_stat.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"changed": false, "stat": {"exists": true, "path": "/etc/nginx/sites-available/default", "mode": "0644", "isdir": false, "ischr": false, "isblk": false, "isreg": true, "isfifo": false, "islnk": false, "issock": false, "uid": 0, "gid": 0, "size": 2439, "inode": 2493215, "dev": 2049, "nlink": 1, "atime": 1600159782.2296295, "mtime": 1600154671.2187836, "ctime": 1600154673.3667853, "wusr": true, "rusr": true, "xusr": false, "wgrp": false, "rgrp": true, "xgrp": false, "woth": false, "roth": true, "xoth": false, "isuid": false, "isgid": false, "blocks": 8, "block_size": 4096, "device_type": 0, "readable": true, "writeable": true, "executable": false, "pw_name": "root", "gr_name": "root", "checksum": "76793ca1368230c2885cf7f6a8c3646b898fbb05", "mimetype": "text/plain", "charset": "us-ascii", "version": "1603139562", "attributes": ["extents"], "attr_flags": "e"}, "invocation": {"module_args": {"checksum_algorithm": "sha1", "get_checksum": true, "follow": false, "path": "/etc/nginx/sites-available/default", "get_md5": false, "get_mime": true, "get_attributes": true}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/file.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmphHjm16 TO /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_file.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmphHjm16 /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_file.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmphHjm16\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_file.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:25105\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 25105 bytes at 98304\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/ /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_file.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=teazizgmdctgjbousgrvgxxdclsulotj] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-teazizgmdctgjbousgrvgxxdclsulotj ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/AnsiballZ_file.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"path": "/etc/nginx/sites-available/default", "changed": false, "diff": {"before": {"path": "/etc/nginx/sites-available/default"}, "after": {"path": "/etc/nginx/sites-available/default"}}, "uid": 0, "gid": 0, "owner": "root", "group": "root", "mode": "0644", "state": "file", "size": 2439, "invocation": {"module_args": {"dest": "/etc/nginx/sites-available/default", "recurse": false, "_original_basename": "default", "state": "file", "path": "/etc/nginx/sites-available/default", "force": false, "follow": true, "modification_time_format": "%Y%m%d%H%M.%S", "access_time_format": "%Y%m%d%H%M.%S", "_diff_peek": null, "src": null, "modification_time": null, "access_time": null, "mode": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160841.79-57557-245653267758586/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [ubuntu] => {
+    "changed": false, 
+    "checksum": "76793ca1368230c2885cf7f6a8c3646b898fbb05", 
+    "dest": "/etc/nginx/sites-available/default", 
+    "diff": {
+        "after": {
+            "path": "/etc/nginx/sites-available/default"
+        }, 
+        "before": {
+            "path": "/etc/nginx/sites-available/default"
+        }
+    }, 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "_diff_peek": null, 
+            "_original_basename": "default", 
+            "access_time": null, 
+            "access_time_format": "%Y%m%d%H%M.%S", 
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "dest": "/etc/nginx/sites-available/default", 
+            "directory_mode": null, 
+            "follow": true, 
+            "force": false, 
+            "group": null, 
+            "mode": null, 
+            "modification_time": null, 
+            "modification_time_format": "%Y%m%d%H%M.%S", 
+            "owner": null, 
+            "path": "/etc/nginx/sites-available/default", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "file", 
+            "unsafe_writes": null
+        }
+    }, 
+    "mode": "0644", 
+    "owner": "root", 
+    "path": "/etc/nginx/sites-available/default", 
+    "size": 2439, 
+    "state": "file", 
+    "uid": 0
+}
+
+TASK [Create the custom web root folder in Ubuntu] ************************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:15
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634 && echo ansible-tmp-1600160854.05-57596-199632079836634="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160854.05-57596-199632079836634=/home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/file.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp3A2CM7 TO /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/AnsiballZ_file.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp3A2CM7 /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/AnsiballZ_file.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp3A2CM7\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/AnsiballZ_file.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:25050\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 25050 bytes at 98304\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/ /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/AnsiballZ_file.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=vzxavwbitbmvzngkhoyujajuugsmnuof] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-vzxavwbitbmvzngkhoyujajuugsmnuof ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/AnsiballZ_file.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"path": "/var/html", "changed": false, "diff": {"before": {"path": "/var/html"}, "after": {"path": "/var/html"}}, "uid": 0, "gid": 0, "owner": "root", "group": "root", "mode": "0777", "state": "directory", "size": 4096, "invocation": {"module_args": {"state": "directory", "mode": "0777", "path": "/var/html", "recurse": false, "force": false, "follow": true, "modification_time_format": "%Y%m%d%H%M.%S", "access_time_format": "%Y%m%d%H%M.%S", "_original_basename": null, "_diff_peek": null, "src": null, "modification_time": null, "access_time": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160854.05-57596-199632079836634/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [ubuntu] => {
+    "changed": false, 
+    "diff": {
+        "after": {
+            "path": "/var/html"
+        }, 
+        "before": {
+            "path": "/var/html"
+        }
+    }, 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "_diff_peek": null, 
+            "_original_basename": null, 
+            "access_time": null, 
+            "access_time_format": "%Y%m%d%H%M.%S", 
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "directory_mode": null, 
+            "follow": true, 
+            "force": false, 
+            "group": null, 
+            "mode": "0777", 
+            "modification_time": null, 
+            "modification_time_format": "%Y%m%d%H%M.%S", 
+            "owner": null, 
+            "path": "/var/html", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "directory", 
+            "unsafe_writes": null
+        }
+    }, 
+    "mode": "0777", 
+    "owner": "root", 
+    "path": "/var/html", 
+    "size": 4096, 
+    "state": "directory", 
+    "uid": 0
+}
+
+TASK [Restart nginx web server in Ubuntu] *********************************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:18
+Running systemd
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465 && echo ansible-tmp-1600160861.8-57622-132158030979465="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160861.8-57622-132158030979465=/home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/systemd.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp8v0mHq TO /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/AnsiballZ_systemd.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp8v0mHq /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/AnsiballZ_systemd.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp8v0mHq\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/AnsiballZ_systemd.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:10 O:196608 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:11 O:229376 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:12 O:262144 S:12094\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 32768 bytes at 163840\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 10 32768 bytes at 196608\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 11 32768 bytes at 229376\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 12 12094 bytes at 262144\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/ /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/AnsiballZ_systemd.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=rgcovnaclsxbgpeaamnprgmjygokxela] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-rgcovnaclsxbgpeaamnprgmjygokxela ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/AnsiballZ_systemd.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"name": "nginx", "changed": true, "status": {"Type": "forking", "Restart": "no", "PIDFile": "/run/nginx.pid", "NotifyAccess": "none", "RestartUSec": "100ms", "TimeoutStartUSec": "1min 30s", "TimeoutStopUSec": "5s", "RuntimeMaxUSec": "infinity", "WatchdogUSec": "0", "WatchdogTimestamp": "Tue 2020-09-15 14:36:29 IST", "WatchdogTimestampMonotonic": "88227383275", "PermissionsStartOnly": "no", "RootDirectoryStartOnly": "no", "RemainAfterExit": "no", "GuessMainPID": "yes", "MainPID": "24106", "ControlPID": "0", "FileDescriptorStoreMax": "0", "NFileDescriptorStore": "0", "StatusErrno": "0", "Result": "success", "UID": "[not set]", "GID": "[not set]", "NRestarts": "0", "ExecMainStartTimestamp": "Tue 2020-09-15 14:36:29 IST", "ExecMainStartTimestampMonotonic": "88227383208", "ExecMainExitTimestampMonotonic": "0", "ExecMainPID": "24106", "ExecMainCode": "0", "ExecMainStatus": "0", "ExecStartPre": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -t -q -g daemon on; master_process on; ; ignore_errors=no ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24103 ; code=exited ; status=0 }", "ExecStart": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -g daemon on; master_process on; ; ignore_errors=no ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24105 ; code=exited ; status=0 }", "ExecReload": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -g daemon on; master_process on; -s reload ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }", "ExecStop": "{ path=/sbin/start-stop-daemon ; argv[]=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid ; ignore_errors=yes ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24102 ; code=exited ; status=0 }", "Slice": "system.slice", "ControlGroup": "/system.slice/nginx.service", "MemoryCurrent": "[not set]", "CPUUsageNSec": "[not set]", "TasksCurrent": "3", "IPIngressBytes": "18446744073709551615", "IPIngressPackets": "18446744073709551615", "IPEgressBytes": "18446744073709551615", "IPEgressPackets": "18446744073709551615", "Delegate": "no", "CPUAccounting": "no", "CPUWeight": "[not set]", "StartupCPUWeight": "[not set]", "CPUShares": "[not set]", "StartupCPUShares": "[not set]", "CPUQuotaPerSecUSec": "infinity", "IOAccounting": "no", "IOWeight": "[not set]", "StartupIOWeight": "[not set]", "BlockIOAccounting": "no", "BlockIOWeight": "[not set]", "StartupBlockIOWeight": "[not set]", "MemoryAccounting": "no", "MemoryLow": "0", "MemoryHigh": "infinity", "MemoryMax": "infinity", "MemorySwapMax": "infinity", "MemoryLimit": "infinity", "DevicePolicy": "auto", "TasksAccounting": "yes", "TasksMax": "7054", "IPAccounting": "no", "UMask": "0022", "LimitCPU": "infinity", "LimitCPUSoft": "infinity", "LimitFSIZE": "infinity", "LimitFSIZESoft": "infinity", "LimitDATA": "infinity", "LimitDATASoft": "infinity", "LimitSTACK": "infinity", "LimitSTACKSoft": "8388608", "LimitCORE": "infinity", "LimitCORESoft": "0", "LimitRSS": "infinity", "LimitRSSSoft": "infinity", "LimitNOFILE": "4096", "LimitNOFILESoft": "1024", "LimitAS": "infinity", "LimitASSoft": "infinity", "LimitNPROC": "23515", "LimitNPROCSoft": "23515", "LimitMEMLOCK": "16777216", "LimitMEMLOCKSoft": "16777216", "LimitLOCKS": "infinity", "LimitLOCKSSoft": "infinity", "LimitSIGPENDING": "23515", "LimitSIGPENDINGSoft": "23515", "LimitMSGQUEUE": "819200", "LimitMSGQUEUESoft": "819200", "LimitNICE": "0", "LimitNICESoft": "0", "LimitRTPRIO": "0", "LimitRTPRIOSoft": "0", "LimitRTTIME": "infinity", "LimitRTTIMESoft": "infinity", "OOMScoreAdjust": "0", "Nice": "0", "IOSchedulingClass": "0", "IOSchedulingPriority": "0", "CPUSchedulingPolicy": "0", "CPUSchedulingPriority": "0", "TimerSlackNSec": "50000", "CPUSchedulingResetOnFork": "no", "NonBlocking": "no", "StandardInput": "null", "StandardInputData": "", "StandardOutput": "journal", "StandardError": "inherit", "TTYReset": "no", "TTYVHangup": "no", "TTYVTDisallocate": "no", "SyslogPriority": "30", "SyslogLevelPrefix": "yes", "SyslogLevel": "6", "SyslogFacility": "3", "LogLevelMax": "-1", "SecureBits": "0", "CapabilityBoundingSet": "cap_chown cap_dac_override cap_dac_read_search cap_fowner cap_fsetid cap_kill cap_setgid cap_setuid cap_setpcap cap_linux_immutable cap_net_bind_service cap_net_broadcast cap_net_admin cap_net_raw cap_ipc_lock cap_ipc_owner cap_sys_module cap_sys_rawio cap_sys_chroot cap_sys_ptrace cap_sys_pacct cap_sys_admin cap_sys_boot cap_sys_nice cap_sys_resource cap_sys_time cap_sys_tty_config cap_mknod cap_lease cap_audit_write cap_audit_control cap_setfcap cap_mac_override cap_mac_admin cap_syslog cap_wake_alarm cap_block_suspend", "AmbientCapabilities": "", "DynamicUser": "no", "RemoveIPC": "no", "MountFlags": "", "PrivateTmp": "no", "PrivateDevices": "no", "ProtectKernelTunables": "no", "ProtectKernelModules": "no", "ProtectControlGroups": "no", "PrivateNetwork": "no", "PrivateUsers": "no", "ProtectHome": "no", "ProtectSystem": "no", "SameProcessGroup": "no", "UtmpMode": "init", "IgnoreSIGPIPE": "yes", "NoNewPrivileges": "no", "SystemCallErrorNumber": "0", "LockPersonality": "no", "RuntimeDirectoryPreserve": "no", "RuntimeDirectoryMode": "0755", "StateDirectoryMode": "0755", "CacheDirectoryMode": "0755", "LogsDirectoryMode": "0755", "ConfigurationDirectoryMode": "0755", "MemoryDenyWriteExecute": "no", "RestrictRealtime": "no", "RestrictNamespaces": "no", "MountAPIVFS": "no", "KeyringMode": "private", "KillMode": "mixed", "KillSignal": "15", "SendSIGKILL": "yes", "SendSIGHUP": "no", "Id": "nginx.service", "Names": "nginx.service", "Requires": "sysinit.target system.slice", "WantedBy": "multi-user.target", "Conflicts": "shutdown.target", "Before": "multi-user.target shutdown.target", "After": "network.target sysinit.target basic.target system.slice systemd-journald.socket", "Documentation": "man:nginx(8)", "Description": "A high performance web server and a reverse proxy server", "LoadState": "loaded", "ActiveState": "active", "SubState": "running", "FragmentPath": "/lib/systemd/system/nginx.service", "UnitFileState": "enabled", "UnitFilePreset": "enabled", "StateChangeTimestamp": "Tue 2020-09-15 14:36:29 IST", "StateChangeTimestampMonotonic": "88227383279", "InactiveExitTimestamp": "Tue 2020-09-15 14:36:29 IST", "InactiveExitTimestampMonotonic": "88227175301", "ActiveEnterTimestamp": "Tue 2020-09-15 14:36:29 IST", "ActiveEnterTimestampMonotonic": "88227383279", "ActiveExitTimestamp": "Tue 2020-09-15 14:36:29 IST", "ActiveExitTimestampMonotonic": "88227087589", "InactiveEnterTimestamp": "Tue 2020-09-15 14:36:29 IST", "InactiveEnterTimestampMonotonic": "88227160295", "CanStart": "yes", "CanStop": "yes", "CanReload": "yes", "CanIsolate": "no", "StopWhenUnneeded": "no", "RefuseManualStart": "no", "RefuseManualStop": "no", "AllowIsolate": "no", "DefaultDependencies": "yes", "OnFailureJobMode": "replace", "IgnoreOnIsolate": "no", "NeedDaemonReload": "no", "JobTimeoutUSec": "infinity", "JobRunningTimeoutUSec": "infinity", "JobTimeoutAction": "none", "ConditionResult": "yes", "AssertResult": "yes", "ConditionTimestamp": "Tue 2020-09-15 14:36:29 IST", "ConditionTimestampMonotonic": "88227165668", "AssertTimestamp": "Tue 2020-09-15 14:36:29 IST", "AssertTimestampMonotonic": "88227165669", "Transient": "no", "Perpetual": "no", "StartLimitIntervalUSec": "10s", "StartLimitBurst": "5", "StartLimitAction": "none", "FailureAction": "none", "SuccessAction": "none", "InvocationID": "73eb01eac0ab494ea5ba9ac6ab3485e7", "CollectMode": "inactive"}, "state": "started", "invocation": {"module_args": {"name": "nginx", "state": "restarted", "daemon_reload": false, "daemon_reexec": false, "no_block": false, "enabled": null, "force": null, "masked": null, "user": null, "scope": null}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160861.8-57622-132158030979465/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+changed: [ubuntu] => {
+    "changed": true, 
+    "invocation": {
+        "module_args": {
+            "daemon_reexec": false, 
+            "daemon_reload": false, 
+            "enabled": null, 
+            "force": null, 
+            "masked": null, 
+            "name": "nginx", 
+            "no_block": false, 
+            "scope": null, 
+            "state": "restarted", 
+            "user": null
+        }
+    }, 
+    "name": "nginx", 
+    "state": "started", 
+    "status": {
+        "ActiveEnterTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "ActiveEnterTimestampMonotonic": "88227383279", 
+        "ActiveExitTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "ActiveExitTimestampMonotonic": "88227087589", 
+        "ActiveState": "active", 
+        "After": "network.target sysinit.target basic.target system.slice systemd-journald.socket", 
+        "AllowIsolate": "no", 
+        "AmbientCapabilities": "", 
+        "AssertResult": "yes", 
+        "AssertTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "AssertTimestampMonotonic": "88227165669", 
+        "Before": "multi-user.target shutdown.target", 
+        "BlockIOAccounting": "no", 
+        "BlockIOWeight": "[not set]", 
+        "CPUAccounting": "no", 
+        "CPUQuotaPerSecUSec": "infinity", 
+        "CPUSchedulingPolicy": "0", 
+        "CPUSchedulingPriority": "0", 
+        "CPUSchedulingResetOnFork": "no", 
+        "CPUShares": "[not set]", 
+        "CPUUsageNSec": "[not set]", 
+        "CPUWeight": "[not set]", 
+        "CacheDirectoryMode": "0755", 
+        "CanIsolate": "no", 
+        "CanReload": "yes", 
+        "CanStart": "yes", 
+        "CanStop": "yes", 
+        "CapabilityBoundingSet": "cap_chown cap_dac_override cap_dac_read_search cap_fowner cap_fsetid cap_kill cap_setgid cap_setuid cap_setpcap cap_linux_immutable cap_net_bind_service cap_net_broadcast cap_net_admin cap_net_raw cap_ipc_lock cap_ipc_owner cap_sys_module cap_sys_rawio cap_sys_chroot cap_sys_ptrace cap_sys_pacct cap_sys_admin cap_sys_boot cap_sys_nice cap_sys_resource cap_sys_time cap_sys_tty_config cap_mknod cap_lease cap_audit_write cap_audit_control cap_setfcap cap_mac_override cap_mac_admin cap_syslog cap_wake_alarm cap_block_suspend", 
+        "CollectMode": "inactive", 
+        "ConditionResult": "yes", 
+        "ConditionTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "ConditionTimestampMonotonic": "88227165668", 
+        "ConfigurationDirectoryMode": "0755", 
+        "Conflicts": "shutdown.target", 
+        "ControlGroup": "/system.slice/nginx.service", 
+        "ControlPID": "0", 
+        "DefaultDependencies": "yes", 
+        "Delegate": "no", 
+        "Description": "A high performance web server and a reverse proxy server", 
+        "DevicePolicy": "auto", 
+        "Documentation": "man:nginx(8)", 
+        "DynamicUser": "no", 
+        "ExecMainCode": "0", 
+        "ExecMainExitTimestampMonotonic": "0", 
+        "ExecMainPID": "24106", 
+        "ExecMainStartTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "ExecMainStartTimestampMonotonic": "88227383208", 
+        "ExecMainStatus": "0", 
+        "ExecReload": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -g daemon on; master_process on; -s reload ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }", 
+        "ExecStart": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -g daemon on; master_process on; ; ignore_errors=no ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24105 ; code=exited ; status=0 }", 
+        "ExecStartPre": "{ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -t -q -g daemon on; master_process on; ; ignore_errors=no ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24103 ; code=exited ; status=0 }", 
+        "ExecStop": "{ path=/sbin/start-stop-daemon ; argv[]=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid ; ignore_errors=yes ; start_time=[Tue 2020-09-15 14:36:29 IST] ; stop_time=[Tue 2020-09-15 14:36:29 IST] ; pid=24102 ; code=exited ; status=0 }", 
+        "FailureAction": "none", 
+        "FileDescriptorStoreMax": "0", 
+        "FragmentPath": "/lib/systemd/system/nginx.service", 
+        "GID": "[not set]", 
+        "GuessMainPID": "yes", 
+        "IOAccounting": "no", 
+        "IOSchedulingClass": "0", 
+        "IOSchedulingPriority": "0", 
+        "IOWeight": "[not set]", 
+        "IPAccounting": "no", 
+        "IPEgressBytes": "18446744073709551615", 
+        "IPEgressPackets": "18446744073709551615", 
+        "IPIngressBytes": "18446744073709551615", 
+        "IPIngressPackets": "18446744073709551615", 
+        "Id": "nginx.service", 
+        "IgnoreOnIsolate": "no", 
+        "IgnoreSIGPIPE": "yes", 
+        "InactiveEnterTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "InactiveEnterTimestampMonotonic": "88227160295", 
+        "InactiveExitTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "InactiveExitTimestampMonotonic": "88227175301", 
+        "InvocationID": "73eb01eac0ab494ea5ba9ac6ab3485e7", 
+        "JobRunningTimeoutUSec": "infinity", 
+        "JobTimeoutAction": "none", 
+        "JobTimeoutUSec": "infinity", 
+        "KeyringMode": "private", 
+        "KillMode": "mixed", 
+        "KillSignal": "15", 
+        "LimitAS": "infinity", 
+        "LimitASSoft": "infinity", 
+        "LimitCORE": "infinity", 
+        "LimitCORESoft": "0", 
+        "LimitCPU": "infinity", 
+        "LimitCPUSoft": "infinity", 
+        "LimitDATA": "infinity", 
+        "LimitDATASoft": "infinity", 
+        "LimitFSIZE": "infinity", 
+        "LimitFSIZESoft": "infinity", 
+        "LimitLOCKS": "infinity", 
+        "LimitLOCKSSoft": "infinity", 
+        "LimitMEMLOCK": "16777216", 
+        "LimitMEMLOCKSoft": "16777216", 
+        "LimitMSGQUEUE": "819200", 
+        "LimitMSGQUEUESoft": "819200", 
+        "LimitNICE": "0", 
+        "LimitNICESoft": "0", 
+        "LimitNOFILE": "4096", 
+        "LimitNOFILESoft": "1024", 
+        "LimitNPROC": "23515", 
+        "LimitNPROCSoft": "23515", 
+        "LimitRSS": "infinity", 
+        "LimitRSSSoft": "infinity", 
+        "LimitRTPRIO": "0", 
+        "LimitRTPRIOSoft": "0", 
+        "LimitRTTIME": "infinity", 
+        "LimitRTTIMESoft": "infinity", 
+        "LimitSIGPENDING": "23515", 
+        "LimitSIGPENDINGSoft": "23515", 
+        "LimitSTACK": "infinity", 
+        "LimitSTACKSoft": "8388608", 
+        "LoadState": "loaded", 
+        "LockPersonality": "no", 
+        "LogLevelMax": "-1", 
+        "LogsDirectoryMode": "0755", 
+        "MainPID": "24106", 
+        "MemoryAccounting": "no", 
+        "MemoryCurrent": "[not set]", 
+        "MemoryDenyWriteExecute": "no", 
+        "MemoryHigh": "infinity", 
+        "MemoryLimit": "infinity", 
+        "MemoryLow": "0", 
+        "MemoryMax": "infinity", 
+        "MemorySwapMax": "infinity", 
+        "MountAPIVFS": "no", 
+        "MountFlags": "", 
+        "NFileDescriptorStore": "0", 
+        "NRestarts": "0", 
+        "Names": "nginx.service", 
+        "NeedDaemonReload": "no", 
+        "Nice": "0", 
+        "NoNewPrivileges": "no", 
+        "NonBlocking": "no", 
+        "NotifyAccess": "none", 
+        "OOMScoreAdjust": "0", 
+        "OnFailureJobMode": "replace", 
+        "PIDFile": "/run/nginx.pid", 
+        "PermissionsStartOnly": "no", 
+        "Perpetual": "no", 
+        "PrivateDevices": "no", 
+        "PrivateNetwork": "no", 
+        "PrivateTmp": "no", 
+        "PrivateUsers": "no", 
+        "ProtectControlGroups": "no", 
+        "ProtectHome": "no", 
+        "ProtectKernelModules": "no", 
+        "ProtectKernelTunables": "no", 
+        "ProtectSystem": "no", 
+        "RefuseManualStart": "no", 
+        "RefuseManualStop": "no", 
+        "RemainAfterExit": "no", 
+        "RemoveIPC": "no", 
+        "Requires": "sysinit.target system.slice", 
+        "Restart": "no", 
+        "RestartUSec": "100ms", 
+        "RestrictNamespaces": "no", 
+        "RestrictRealtime": "no", 
+        "Result": "success", 
+        "RootDirectoryStartOnly": "no", 
+        "RuntimeDirectoryMode": "0755", 
+        "RuntimeDirectoryPreserve": "no", 
+        "RuntimeMaxUSec": "infinity", 
+        "SameProcessGroup": "no", 
+        "SecureBits": "0", 
+        "SendSIGHUP": "no", 
+        "SendSIGKILL": "yes", 
+        "Slice": "system.slice", 
+        "StandardError": "inherit", 
+        "StandardInput": "null", 
+        "StandardInputData": "", 
+        "StandardOutput": "journal", 
+        "StartLimitAction": "none", 
+        "StartLimitBurst": "5", 
+        "StartLimitIntervalUSec": "10s", 
+        "StartupBlockIOWeight": "[not set]", 
+        "StartupCPUShares": "[not set]", 
+        "StartupCPUWeight": "[not set]", 
+        "StartupIOWeight": "[not set]", 
+        "StateChangeTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "StateChangeTimestampMonotonic": "88227383279", 
+        "StateDirectoryMode": "0755", 
+        "StatusErrno": "0", 
+        "StopWhenUnneeded": "no", 
+        "SubState": "running", 
+        "SuccessAction": "none", 
+        "SyslogFacility": "3", 
+        "SyslogLevel": "6", 
+        "SyslogLevelPrefix": "yes", 
+        "SyslogPriority": "30", 
+        "SystemCallErrorNumber": "0", 
+        "TTYReset": "no", 
+        "TTYVHangup": "no", 
+        "TTYVTDisallocate": "no", 
+        "TasksAccounting": "yes", 
+        "TasksCurrent": "3", 
+        "TasksMax": "7054", 
+        "TimeoutStartUSec": "1min 30s", 
+        "TimeoutStopUSec": "5s", 
+        "TimerSlackNSec": "50000", 
+        "Transient": "no", 
+        "Type": "forking", 
+        "UID": "[not set]", 
+        "UMask": "0022", 
+        "UnitFilePreset": "enabled", 
+        "UnitFileState": "enabled", 
+        "UtmpMode": "init", 
+        "WantedBy": "multi-user.target", 
+        "WatchdogTimestamp": "Tue 2020-09-15 14:36:29 IST", 
+        "WatchdogTimestampMonotonic": "88227383275", 
+        "WatchdogUSec": "0"
+    }
+}
+
+TASK [Deploy custom web page into nginx web server in Ubuntu] *************************************************
+task path: /root/Ansible/Day2/install-nginx.yml:21
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'echo ~ansible && sleep 0'"'"''
+<192.168.112.131> (0, '/home/ansible\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp `"&& mkdir /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137 && echo ansible-tmp-1600160871.96-57659-179319408383137="` echo /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137 `" ) && sleep 0'"'"''
+<192.168.112.131> (0, 'ansible-tmp-1600160871.96-57659-179319408383137=/home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/stat.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpT69h8X TO /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_stat.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpT69h8X /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_stat.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmpT69h8X\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_stat.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:19780\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 19780 bytes at 98304\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/ /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_stat.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=ahupakwqwagcuuvykbkpqswsyyddtbxs] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-ahupakwqwagcuuvykbkpqswsyyddtbxs ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_stat.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"changed": false, "stat": {"exists": true, "path": "/var/html/index.html", "mode": "0777", "isdir": false, "ischr": false, "isblk": false, "isreg": true, "isfifo": false, "islnk": false, "issock": false, "uid": 0, "gid": 0, "size": 231, "inode": 2493216, "dev": 2049, "nlink": 1, "atime": 1600159821.8296063, "mtime": 1600159796.937621, "ctime": 1600159801.1056185, "wusr": true, "rusr": true, "xusr": true, "wgrp": true, "rgrp": true, "xgrp": true, "woth": true, "roth": true, "xoth": true, "isuid": false, "isgid": false, "blocks": 8, "block_size": 4096, "device_type": 0, "readable": true, "writeable": true, "executable": true, "pw_name": "root", "gr_name": "root", "checksum": "22946e06ff28d592dbdad2b45b2cec25ca505cf3", "mimetype": "text/html", "charset": "us-ascii", "version": "1344851731", "attributes": ["extents"], "attr_flags": "e"}, "invocation": {"module_args": {"checksum_algorithm": "sha1", "get_checksum": true, "follow": false, "path": "/var/html/index.html", "get_md5": false, "get_mime": true, "get_attributes": true}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+Using module file /usr/lib/python2.7/site-packages/ansible/modules/files/file.py
+<192.168.112.131> PUT /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp2VtY6E TO /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_file.py
+<192.168.112.131> SSH: EXEC sshpass -d11 sftp -o BatchMode=no -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc '[192.168.112.131]'
+<192.168.112.131> (0, 'sftp> put /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp2VtY6E /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_file.py\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 8 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/ansible size 0\r\ndebug3: Looking up /root/.ansible/tmp/ansible-local-57449BIDIA1/tmp2VtY6E\r\ndebug3: Sent message fd 8 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_file.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:25130\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 25130 bytes at 98304\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/ /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_file.py && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc -tt 192.168.112.131 '/bin/sh -c '"'"'sudo -H -S  -p "[sudo via ansible, key=rfrjchpafclpwoyizhxsccljxxrrazpg] password:" -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-rfrjchpafclpwoyizhxsccljxxrrazpg ; /usr/bin/python3 /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/AnsiballZ_file.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.112.131> (0, '\r\n\r\n{"path": "/var/html/index.html", "changed": false, "diff": {"before": {"path": "/var/html/index.html"}, "after": {"path": "/var/html/index.html"}}, "uid": 0, "gid": 0, "owner": "root", "group": "root", "mode": "0777", "state": "file", "size": 231, "invocation": {"module_args": {"dest": "/var/html/index.html", "_original_basename": "index.html.j2", "follow": false, "recurse": false, "state": "file", "mode": "0777", "path": "/var/html/index.html", "force": false, "modification_time_format": "%Y%m%d%H%M.%S", "access_time_format": "%Y%m%d%H%M.%S", "_diff_peek": null, "src": null, "modification_time": null, "access_time": null, "owner": null, "group": null, "seuser": null, "serole": null, "selevel": null, "setype": null, "attributes": null, "content": null, "backup": null, "remote_src": null, "regexp": null, "delimiter": null, "directory_mode": null, "unsafe_writes": null}}}\r\n', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.112.131 closed.\r\n')
+<192.168.112.131> ESTABLISH SSH CONNECTION FOR USER: ansible
+<192.168.112.131> SSH: EXEC sshpass -d11 ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o 'User="ansible"' -o ConnectTimeout=10 -o ControlPath=/root/.ansible/cp/cbb50751cc 192.168.112.131 '/bin/sh -c '"'"'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1600160871.96-57659-179319408383137/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.112.131> (0, '', 'OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 58: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 57325\r\ndebug3: mux_client_request_session: session request sent\r\ndebug1: mux_client_request_session: master session id: 2\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [ubuntu] => {
+    "changed": false, 
+    "checksum": "22946e06ff28d592dbdad2b45b2cec25ca505cf3", 
+    "dest": "/var/html/index.html", 
+    "diff": {
+        "after": {
+            "path": "/var/html/index.html"
+        }, 
+        "before": {
+            "path": "/var/html/index.html"
+        }
+    }, 
+    "gid": 0, 
+    "group": "root", 
+    "invocation": {
+        "module_args": {
+            "_diff_peek": null, 
+            "_original_basename": "index.html.j2", 
+            "access_time": null, 
+            "access_time_format": "%Y%m%d%H%M.%S", 
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "dest": "/var/html/index.html", 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": "0777", 
+            "modification_time": null, 
+            "modification_time_format": "%Y%m%d%H%M.%S", 
+            "owner": null, 
+            "path": "/var/html/index.html", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "file", 
+            "unsafe_writes": null
+        }
+    }, 
+    "mode": "0777", 
+    "owner": "root", 
+    "path": "/var/html/index.html", 
+    "size": 231, 
+    "state": "file", 
+    "uid": 0
+}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP ****************************************************************************************************
+ubuntu                     : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
