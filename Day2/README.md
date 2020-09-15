@@ -34,3 +34,12 @@ ansible-playbook -i hosts ping.yml
 6. On ACM, ansible give a summary of the playbook execution outcome
 
 The above steps will repeated for each tasks written in the Playbook.
+
+# Playbook Structure
+1. Playbook is a YAML file
+2. Each Playbook may contain a list of Play
+3. Each Play contains a hosts section and tasks section
+4. The hosts section tell the ansible nodes on which the automation must be done. 
+5. The connection details to the Ansible nodes are available in the inventory file.
+6. The tasks section, may contain a list of Tasks
+7. Each Task can invoke exactly one Ansible module.
