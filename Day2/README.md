@@ -22,6 +22,8 @@ ping.yml
       
         - name: Ping the ansible node
           ping:
+          
+ansible-playbook -i hosts ping.yml
 
 # Ansible Playbook Execution 
 1. Ansible opens a SSH connections parallely to the remote ansible nodes(ubuntu and centos)
@@ -30,3 +32,5 @@ ping.yml
 4. From ACM ansible executes the python scripts onto the ansible node
 5. Ansible then waits for the responses to come out from all ansible nodes.
 6. On ACM, ansible give a summary of the playbook execution outcome
+
+The above steps will repeated for each tasks written in the Playbook.
