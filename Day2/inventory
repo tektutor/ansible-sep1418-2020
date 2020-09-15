@@ -1,8 +1,8 @@
 [all]
 ubuntu ansible_user=ansible ansible_host=192.168.112.131
-centos ansible_user=anisble ansible_host=192.168.112.130
+centos ansible_user=ansible ansible_host=192.168.112.130
 
 [all:vars]
-ansible_password=Abridge@123
+ansible_private_key_file=/root/.ssh/id_rsa
 ansible_become_user=root
-ansible_become_password=Abridge@123
+ansible_become_password=ansible
