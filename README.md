@@ -20,8 +20,25 @@
 * Ansible Core is an Open Source Tool developed by Ansible Inc
 * Ansible Tower is an Enterprise Tool developed by RedHat on top of Ansible Core
 
+## Automation
+* As automation is done by System Administrators, Developers and QA, the language choice (DSL) is crucial.
+* Though imperative languages are powerful it is not suitable as not everyone will find it easy to learn and work.
+* More code must be written to achieve the same stuff in imperative languages as compared to declarative languages.
+
+## Automation mainly has two parts
+<ul>
+  <li>What? - what you wanted to automate</li>
+  <li>How? - the logic that must be followed to perform the automation</li>
+</ul
+
 # Language Types
 ## Imperative
+* If imperative languages are used for automation, you must write code to explain "What" and "How"
+* Many lines of code must be written to achieve the automation
+* Maintenance of code is difficult as more lines of code 
+* More lines of code means chances of bugs are more
+
+### Examples
 <ul>
   <li>Java</li>
   <li>C++</li>
@@ -35,20 +52,9 @@
 ## Declarative
 <ul>
   <li>Ansible Playbook is declarative</li>
-  <li>What? -In declarative language, you just need to mention what you wanted to automate</li>
+  <li>What? -In declarative language, you just need to mention what you want to automate</li>
   <li>How? - Ansible will take care of the how part(logic)</li>
 </ul>
-
-## Automation
-* As automation is done by System Administrators, Developers and QA, the language choice (DSL) is crucial.
-* Though imperative languages are powerful it is not suitable as not everyone will find it easy to learn and work.
-* More code must be written to achieve the same stuff in imperative languages as compared to declarative languages.
-
-Automation mainly has two parts
-<ul>
-  <li>What? - what you wanted to automate</li>
-  <li>How? - you need to write code to explain the logic that must be followed to perform the automation</li>
-</ul
 
 # Ansible Alternates
 <ul>
