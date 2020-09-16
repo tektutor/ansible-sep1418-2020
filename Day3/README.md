@@ -38,7 +38,7 @@ You need to copy the public key of root user as shown below
     
     cp /root/.ssh/id_rsa.pub authorized_keys
     
-You are expected type 'ansible' as the password for 'ansible' user when prompted
+You are expected to type 'ansible' as the password for 'ansible' user when prompted
     
     scp authorized_keys ansible@192.168.112.130:/home/ansible/.ssh/authorized_keys
     
