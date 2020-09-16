@@ -23,13 +23,14 @@ You need to create .ssh folder
     
     chmod 700 /home/ansible/.ssh
     
-# From the Ansible Controller Machine(ACM), you need to try the below. Assuming 192.168.112.130 is the Centos ansible node IP, you may change this to yours.
+From the Ansible Controller Machine(ACM), you need to try the below. Assuming 192.168.112.130 is the Centos ansible node IP, you may change this to yours.
 
 The expectation here is that you should be able do ssh into CentOS node as ansible user by typing the password when prompted
 
     ssh ansible@192.168.112.130
 
 You need to logout by typing exit and return back to ACM root user shell prompt
+    exit
 
 You need to copy the public key of root user as shown below
     cp /root/.ssh/id_rsa.pub authorized_keys
@@ -42,9 +43,3 @@ You may now see if you are able to ssh into CentOS node without password prompt
     
 If all the above steps were successfuly, you should be able to ping CentOS node as shown below
     ansible -i /root/Training/hosts centos -m ping
-
-
-
-
-
-
