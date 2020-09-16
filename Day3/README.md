@@ -36,6 +36,8 @@ You need to force write and quit the file
 
     :wq!
  
+# Configured CentOS node for key based login authentication
+
 You need to create .ssh folder
 
     mkdir -p /home/ansible/.ssh
