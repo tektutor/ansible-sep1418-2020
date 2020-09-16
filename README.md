@@ -23,6 +23,13 @@ You need to create a inventory file with name hosts under the Training folder wi
 
 You may have to change the IP address of Ubuntu and Ansible Node with IP details of your ansible nodes.
 
+Whenever you need to pull latest code from this GitHub, you need to do the below
+
+    cd /root/ansible-sep1418-2020
+    git pull
+    
+Now you will have the latest code!
+
 # Ansible Overview
 * is an open source tool
 * Ansible is developed by Michael Deehan ( a former RedHat employee )
