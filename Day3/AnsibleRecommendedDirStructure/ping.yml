@@ -1,0 +1,13 @@
+- name: First Play
+  hosts: ubuntu 
+  gather_facts: yes
+  tasks: 
+    - name: Ping the ansible node
+      ping:
+
+- name: Second Play
+  hosts: centos
+  gather_facts: yes
+  tasks: 
+    - name: Ping the ansible node
+      ping:
