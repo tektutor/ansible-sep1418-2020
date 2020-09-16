@@ -1,0 +1,32 @@
+- name: This play will install, configure and deploy custom web page into nginx web server
+  hosts: all 
+  become: yes
+  vars:
+    - tektutor_greeting_msg: DevOps!
+    - tektutor_provisioner_tool: VMWare Workstation
+    - tektutor_conf_mgr_tool: Ansible
+  tasks:
+     - name: Install nginx web server in Ubuntu
+       when: ansible_distribution == "Ubuntu" and ansible_os_family == "Debian"
+       apt: name=nginx state=latest update_cache=yes
+
+     - name: Install Exra Pacakges for Enterprise Linux (EPEL) in CentOS 
+       when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
+       yum: name=epel-release state=latest
+
+     - name: Install nginx web server in CentOS 
+       when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
+       yum: name=nginx state=latest
+
+     - name: Configure nginx web root folder in Ubuntu
+       when: ansible_distribution == "Ubuntu" and ansible_os_family == "Debian"
+       copy: src=default dest=/etc/nginx/sites-available/default
+
+     - name: Create the custom web root folder in Ansible node 
+       file: path=/var/html state=directory mode=0777
+
+     - name: Restart nginx web server in Ansible node
+       service: name=nginx state=restarted
+
+     - name: Deploy custom web page into nginx web server in Ansible node
+       template: src=index.html.j2 dest=/var/html/index.html mode=0777
