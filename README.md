@@ -1,4 +1,27 @@
 
+# Cloning this lab exercises 
+
+On your Ansible Lab machine, login as root user
+
+    su -
+    
+    mkdir Training
+    cd Training
+    git clone https://github.com/tektutor/ansible-sep1418-2020.git
+
+You need to create a inventory file with name hosts with the below contents
+
+    [all]
+    ubuntu ansible_host=192.168.112.131
+    centos ansible_host=192.168.112.130
+
+    [all:vars]
+    ansible_user=ansible
+    ansible_become_user=root
+    ansible_become_password=ansible
+    ansible_private_key_file=/root/.ssh/id_rsa
+
+You may have to change the IP address of Ubuntu and Ansible Node with IP details of your ansible nodes.
 
 # Ansible Overview
 * is an open source tool
