@@ -18,7 +18,8 @@ Try to login as 'ansible' user with 'ansible' as the password
 
     su - ansible
     
-You may add the 'ansible' user to /etc/sudoers file as shown below
+
+# You may add the 'ansible' user to /etc/sudoers file as shown below
     
     vim /etc/sudoers
     
