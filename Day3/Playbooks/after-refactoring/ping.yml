@@ -1,0 +1,13 @@
+- name: First Play
+  hosts: prod
+  gather_facts: yes
+  tasks: 
+    - name: Ping the ansible node
+      ping:
+
+- name: Second Play
+  hosts: qa
+  gather_facts: yes
+  tasks: 
+    - name: Ping the ansible node
+      ping:

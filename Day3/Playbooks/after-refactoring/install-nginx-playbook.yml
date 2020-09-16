@@ -1,0 +1,18 @@
+- name: This play will install, configure and deploy custom web page into nginx web server
+  hosts: all 
+  become: yes
+  vars_files:
+    - nginx_conf.yml
+  tasks:
+     - include: "install-nginx-{{ansible_distribution|lower}}.yml"
+     - include: "configure-nginx-{{ansible_distribution|lower}}.yml"
+     - include: common-nginx-tasks.yml
+
+     - name: Restart using shell module
+       shell: systemctl start nginx
+
+     - shell:  ansible-playbook -i hosts ping.yml
+       delegate_to: localhost
+       register: output
+
+     - debug: var=output

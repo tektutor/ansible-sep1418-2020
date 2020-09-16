@@ -1,0 +1,2 @@
+- name: Configure nginx web root folder in Ubuntu
+  copy: src=default dest=/etc/nginx/sites-available/default

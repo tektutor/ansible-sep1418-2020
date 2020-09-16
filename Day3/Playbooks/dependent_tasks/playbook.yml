@@ -1,0 +1,15 @@
+- name: Dependent tasks
+  hosts: localhost
+  tasks:
+   - name: First Task
+     command: /bin/true
+     register: output
+     ignore_errors: yes
+
+   - name: Second Task
+     when: output.rc == 0
+     debug: msg="Execute second Task"
+
+   - name: Third task
+     when: output.rc != 0
+     debug: msg="Execute third Task"

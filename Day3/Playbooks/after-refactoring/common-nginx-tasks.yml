@@ -1,0 +1,9 @@
+- name: Create the custom web root folder in Ansible node 
+  file: path=/var/html state=directory mode=0777
+
+- name: Restart nginx web server in Ansible node
+  service: name=nginx state=restarted
+
+- name: Deploy custom web page into nginx web server in Ansible node
+  template: src=index.html.j2 dest=/var/html/index.html mode=0777
+

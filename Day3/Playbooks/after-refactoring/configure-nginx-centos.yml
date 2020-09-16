@@ -1,0 +1,9 @@
+- name: Configure nginx web root folder in CentOS 
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+
+- name: Open port 80 on firewall in CentOS ansible node
+  shell: firewall-cmd --zone=public --add-port=80/tcp --permanent && firewall-cmd --reload
+
+- name: Grant permission to custom  web root folder in CentOS ansible node
+  shell: chcon -Rt httpd_sys_content_t /var/html
+
