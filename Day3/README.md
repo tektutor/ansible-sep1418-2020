@@ -36,7 +36,7 @@ You need to force write and quit the file
 
     :wq!
  
-# Configured CentOS node for key based login authentication
+# Configure CentOS node for key pair based login authentication
 
 You need to create .ssh folder
 
