@@ -18,6 +18,23 @@ Try to login as 'ansible' user with 'ansible' as the password
 
     su - ansible
     
+You may add the 'ansible' user to /etc/sudoers file as shown below
+    
+    vim /etc/sudoers
+    
+You need to now look for a line that appears shown below
+
+    root ALL=(ALL) ALL
+
+You need to add a new line as shown below
+
+    root    ALL=(ALL) ALL
+    ansible ALL=(ALL) ALL    
+    
+You need to force write and quit the file
+
+    :wq!
+ 
 You need to create .ssh folder
 
     mkdir -p /home/ansible/.ssh
