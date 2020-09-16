@@ -9,7 +9,7 @@ On your Ansible Lab machine, login as root user
     cd Training
     git clone https://github.com/tektutor/ansible-sep1418-2020.git
 
-You need to create a inventory file with name hosts with the below contents
+You need to create a inventory file with name hosts under the Training folder with the below contents
 
     [all]
     ubuntu ansible_host=192.168.112.131
