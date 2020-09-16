@@ -44,7 +44,7 @@ You are expected to type 'ansible' as the password for 'ansible' user when promp
     
 You may now see if you are able to ssh into CentOS node without password prompt
     
-    ssh ansible@192.168.112.13
+    ssh ansible@192.168.112.130
     
 If all the above steps were successfuly, you should be able to ping CentOS node as shown below
     
