@@ -30,6 +30,14 @@ Whenever you need to pull latest code from this GitHub, you need to do the below
     
 Now you will have the latest code!
 
+If you need to execute any playbook, you may try as below
+
+    cd ansible-sep1418-2020/Day2
+    ansible-playbook -i /root/Training/hosts install-nginx.yml
+    
+> Note
+* you need to use the inventory that you created under the Training folder every time.
+
 # Ansible Overview
 * is an open source tool
 * Ansible is developed by Michael Deehan ( a former RedHat employee )
