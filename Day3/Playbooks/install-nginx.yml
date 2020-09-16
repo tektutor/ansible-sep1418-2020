@@ -18,12 +18,25 @@
        when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
        yum: name=nginx state=latest
 
+     - name: Create the custom web root folder in Ansible node 
+       file: path=/var/html state=directory mode=0777
+
      - name: Configure nginx web root folder in Ubuntu
        when: ansible_distribution == "Ubuntu" and ansible_os_family == "Debian"
        copy: src=default dest=/etc/nginx/sites-available/default
 
-     - name: Create the custom web root folder in Ansible node 
-       file: path=/var/html state=directory mode=0777
+     - name: Configure nginx web root folder in CentOS 
+       when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
+       copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+
+     - name: Open port 80 on firewall in CentOS ansible node
+       when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
+       shell: firewall-cmd --zone=public --add-port=80/tcp --permanent && firewall-cmd --reload
+
+     - name: Grant permission to custom  web root folder in CentOS ansible node
+       when: ansible_distribution == "CentOS" and ansible_os_family == "RedHat"
+       shell: chcon -Rt httpd_sys_content_t /var/html
+
 
      - name: Restart nginx web server in Ansible node
        service: name=nginx state=restarted
