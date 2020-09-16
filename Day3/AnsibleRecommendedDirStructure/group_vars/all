@@ -1,0 +1,4 @@
+ansible_user: ansible
+ansible_private_key_file: /root/.ssh/id_rsa
+ansible_become_user: root
+ansible_become_password: ansible
