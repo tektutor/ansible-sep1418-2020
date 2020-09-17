@@ -1,23 +1,45 @@
+- name: Check if apache2 file already exists
+  stat: path=tomcat/templates/apache2.conf
+  delegate_to: localhost
+  register: file_exists
+  tags:
+     - Check config files exists
+
+- debug: var=file_exists.stat.exists
+  tags:
+     - Check config files exists
+
 - name: Copy tomcat main config file from Ubuntu node to ACM
-  fetch: src=/etc/apache2/apache2.conf dest=tomcat/files/apache2.conf flat=yes
+  when: file_exists.stat.exists == false
+  fetch: src=/etc/apache2/apache2.conf dest=tomcat/templates/apache2.conf flat=yes
+  run_once: true
+
+- name: Check if apache2 file already exists
+  stat: path=tomcat/templates/000-default.conf
+  delegate_to: localhost
+  register: file_exists
+  tags:
+     - Check config files exists
 
 - name: Copy tomcat sites config file from Ubuntu node to ACM
-  fetch: src=/etc/apache2/sites-available/000-default.conf dest=tomcat/files/000-default.conf flat=yes
+  when: file_exists.stat.exists == false
+  fetch: src=/etc/apache2/sites-available/000-default.conf dest=tomcat/templates/000-default.conf flat=yes
+  run_once: true
 
-- name: Configure the tomcat sites config with custom document root folder for Ubuntu node
-  shell: sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/html/' 000-default.conf
-  delegate_to: localhost
+#- name: Configure the tomcat sites config with custom document root folder for Ubuntu node
+#  shell: sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/html/' ../files/000-default.conf
+#  delegate_to: localhost
 
-- name: Configure the tomcat main config with custom document root folder for Ubuntu node
-  shell: sed -i 's/\<Directory \/var\/www\//\<Directory \/var\/html/' apache2.conf
-  delegate_to: localhost
+#  - name: Configure the tomcat main config with custom document root folder for Ubuntu node
+#   shell: sed -i 's/\<Directory \/var\/www\//\<Directory \/var\/html/' ../files/apache2.conf
+#   delegate_to: localhost
 
 - name: Copy the main config file back to Ubuntu node
-  copy: src=apache2.conf dest=/etc/apache2/apache2.conf backup=yes
+  template: src=apache2.conf dest=/etc/apache2/apache2.conf backup=yes
   notify:
      - Restart tomcat in Ubuntu node
 
 - name: Copy the sites config file back to Ubuntu node
-  copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf backup=yes
+  template: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf backup=yes
   notify:
      - Restart tomcat in Ubuntu node
