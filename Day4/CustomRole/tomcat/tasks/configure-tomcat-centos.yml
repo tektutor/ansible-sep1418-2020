@@ -1,0 +1,2 @@
+- name: Copy tomcat configuration file from CentOS node to ACM
+  fetch: src=/etc/httpd/conf/httpd.conf dest=tomcat/files/httpd.conf flat=yes

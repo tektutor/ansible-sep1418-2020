@@ -3,3 +3,6 @@
   tasks:
     - name: Install notepad plus plus
       win_chocolatey: name=notepadplusplus state=latest
+
+    - name: Install Adobe Acrobat Reader 
+      win_chocolatey: name=adobereader state=latest

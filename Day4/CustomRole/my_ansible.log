@@ -1,0 +1,127 @@
+2020-09-17 02:22:26,429 p=112274 u=root n=ansible | centos | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+2020-09-17 02:22:27,080 p=112274 u=root n=ansible | ubuntu | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+2020-09-17 02:23:09,850 p=112327 u=root n=ansible | [WARNING]: file /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/common-tomcat-tasks.yml is empty and had no tasks to
+include
+
+2020-09-17 02:23:10,124 p=112327 u=root n=ansible | PLAY [Demonstrates invoking custom ansible role in a playbook] ******************************************************************************
+2020-09-17 02:23:10,161 p=112327 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 02:23:14,922 p=112327 u=root n=ansible | ok: [ubuntu]
+2020-09-17 02:23:15,689 p=112327 u=root n=ansible | ok: [centos]
+2020-09-17 02:23:15,761 p=112327 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 02:23:17,140 p=112327 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-ubuntu.yml for ubuntu
+2020-09-17 02:23:17,150 p=112327 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-centos.yml for centos
+2020-09-17 02:23:17,223 p=112327 u=root n=ansible | TASK [Install Apache tomcat on Ubuntu node] *************************************************************************************************
+2020-09-17 02:23:21,042 p=112327 u=root n=ansible | fatal: [ubuntu]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation"}
+2020-09-17 02:23:21,097 p=112327 u=root n=ansible | TASK [tomcat : Install Extra Packagest for Enterprise Linux (EPEL) in CentOS node] **********************************************************
+2020-09-17 02:24:24,414 p=112327 u=root n=ansible | ok: [centos]
+2020-09-17 02:24:24,470 p=112327 u=root n=ansible | TASK [tomcat : Install Apache tomact in CentOS node] ****************************************************************************************
+2020-09-17 02:24:36,253 p=112327 u=root n=ansible | fatal: [centos]: FAILED! => {"changed": true, "changes": {"installed": ["httpd"], "updated": []}, "msg": "You need to be root to perform this command.\n", "obsoletes": {"iwl7265-firmware": {"dist": "noarch", "repo": "@anaconda", "version": "22.0.7.0-72.el7"}}, "rc": 1, "results": ["Loaded plugins: fastestmirror, langpacks\n"]}
+2020-09-17 02:24:36,265 p=112327 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 02:24:36,266 p=112327 u=root n=ansible | centos                     : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-09-17 02:24:36,266 p=112327 u=root n=ansible | ubuntu                     : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-09-17 02:29:42,335 p=112516 u=root n=ansible | [WARNING]: file /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/common-tomcat-tasks.yml is empty and had no tasks to
+include
+
+2020-09-17 02:29:42,499 p=112516 u=root n=ansible | PLAY [Demonstrates invoking custom ansible role in a playbook] ******************************************************************************
+2020-09-17 02:29:42,567 p=112516 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 02:29:52,772 p=112516 u=root n=ansible | ok: [ubuntu]
+2020-09-17 02:29:53,432 p=112516 u=root n=ansible | ok: [centos]
+2020-09-17 02:29:53,652 p=112516 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 02:29:56,175 p=112516 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-ubuntu.yml for ubuntu
+2020-09-17 02:29:56,204 p=112516 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-centos.yml for centos
+2020-09-17 02:29:56,448 p=112516 u=root n=ansible | TASK [Install Apache tomcat on Ubuntu node] *************************************************************************************************
+2020-09-17 02:31:09,388 p=112516 u=root n=ansible | changed: [ubuntu]
+2020-09-17 02:31:09,538 p=112516 u=root n=ansible | TASK [tomcat : Install Extra Packagest for Enterprise Linux (EPEL) in CentOS node] **********************************************************
+2020-09-17 02:31:52,337 p=112516 u=root n=ansible | ok: [centos]
+2020-09-17 02:31:52,514 p=112516 u=root n=ansible | TASK [tomcat : Install Apache tomact in CentOS node] ****************************************************************************************
+2020-09-17 02:32:40,323 p=112516 u=root n=ansible | changed: [centos]
+2020-09-17 02:32:40,519 p=112516 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 02:32:41,470 p=112516 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 02:32:41,471 p=112516 u=root n=ansible | centos                     : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-09-17 02:32:41,472 p=112516 u=root n=ansible | ubuntu                     : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-09-17 02:57:47,653 p=113122 u=root n=ansible | [WARNING]: file /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/common-tomcat-tasks.yml is empty and had no tasks to
+include
+
+2020-09-17 02:57:48,284 p=113122 u=root n=ansible | PLAY [Demonstrates invoking custom ansible role in a playbook] ******************************************************************************
+2020-09-17 02:57:48,430 p=113122 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 02:58:03,023 p=113122 u=root n=ansible | ok: [ubuntu]
+2020-09-17 02:58:03,576 p=113122 u=root n=ansible | ok: [centos]
+2020-09-17 02:58:03,768 p=113122 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 02:58:04,917 p=113122 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-ubuntu.yml for ubuntu
+2020-09-17 02:58:04,927 p=113122 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-centos.yml for centos
+2020-09-17 02:58:05,004 p=113122 u=root n=ansible | TASK [Install Apache tomcat on Ubuntu node] *************************************************************************************************
+2020-09-17 02:58:41,097 p=113122 u=root n=ansible | ok: [ubuntu]
+2020-09-17 02:58:41,153 p=113122 u=root n=ansible | TASK [tomcat : Install Extra Packagest for Enterprise Linux (EPEL) in CentOS node] **********************************************************
+2020-09-17 02:59:22,242 p=113122 u=root n=ansible | ok: [centos]
+2020-09-17 02:59:22,429 p=113122 u=root n=ansible | TASK [tomcat : Install Apache tomact in CentOS node] ****************************************************************************************
+2020-09-17 02:59:41,922 p=113122 u=root n=ansible | ok: [centos]
+2020-09-17 02:59:42,161 p=113122 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 02:59:43,460 p=113122 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/configure-tomcat-ubuntu.yml for ubuntu
+2020-09-17 02:59:43,484 p=113122 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/configure-tomcat-centos.yml for centos
+2020-09-17 02:59:43,815 p=113122 u=root n=ansible | TASK [Copy tomcat main config file from Ubuntu node to ACM] *********************************************************************************
+2020-09-17 02:59:50,309 p=113122 u=root n=ansible | changed: [ubuntu]
+2020-09-17 02:59:50,545 p=113122 u=root n=ansible | TASK [Copy tomcat sites config file from Ubuntu node to ACM] ********************************************************************************
+2020-09-17 02:59:53,343 p=113122 u=root n=ansible | changed: [ubuntu]
+2020-09-17 02:59:53,540 p=113122 u=root n=ansible | TASK [Copy tomcat configuration file from CentOS node to ACM] *******************************************************************************
+2020-09-17 02:59:57,392 p=113122 u=root n=ansible | fatal: [centos]: FAILED! => {"changed": false, "msg": "file not found: /etc/httpd/httpd.conf"}
+2020-09-17 02:59:57,416 p=113122 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 02:59:57,419 p=113122 u=root n=ansible | centos                     : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-09-17 02:59:57,420 p=113122 u=root n=ansible | ubuntu                     : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-09-17 03:04:54,426 p=113438 u=root n=ansible | [WARNING]: file /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/common-tomcat-tasks.yml is empty and had no tasks to
+include
+
+2020-09-17 03:04:54,844 p=113438 u=root n=ansible | PLAY [Demonstrates invoking custom ansible role in a playbook] ******************************************************************************
+2020-09-17 03:04:54,941 p=113438 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 03:05:01,993 p=113438 u=root n=ansible | ok: [ubuntu]
+2020-09-17 03:05:02,151 p=113438 u=root n=ansible | ok: [centos]
+2020-09-17 03:05:02,393 p=113438 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 03:05:05,136 p=113438 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-ubuntu.yml for ubuntu
+2020-09-17 03:05:05,146 p=113438 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-centos.yml for centos
+2020-09-17 03:05:05,223 p=113438 u=root n=ansible | TASK [Install Apache tomcat on Ubuntu node] *************************************************************************************************
+2020-09-17 03:05:21,867 p=113438 u=root n=ansible | ok: [ubuntu]
+2020-09-17 03:05:21,923 p=113438 u=root n=ansible | TASK [tomcat : Install Extra Packagest for Enterprise Linux (EPEL) in CentOS node] **********************************************************
+2020-09-17 03:05:53,525 p=113438 u=root n=ansible | ok: [centos]
+2020-09-17 03:05:53,716 p=113438 u=root n=ansible | TASK [tomcat : Install Apache tomact in CentOS node] ****************************************************************************************
+2020-09-17 03:06:21,271 p=113438 u=root n=ansible | ok: [centos]
+2020-09-17 03:06:21,518 p=113438 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 03:06:22,932 p=113438 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/configure-tomcat-ubuntu.yml for ubuntu
+2020-09-17 03:06:22,958 p=113438 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/configure-tomcat-centos.yml for centos
+2020-09-17 03:06:23,235 p=113438 u=root n=ansible | TASK [Copy tomcat main config file from Ubuntu node to ACM] *********************************************************************************
+2020-09-17 03:06:29,224 p=113438 u=root n=ansible | changed: [ubuntu]
+2020-09-17 03:06:29,466 p=113438 u=root n=ansible | TASK [Copy tomcat sites config file from Ubuntu node to ACM] ********************************************************************************
+2020-09-17 03:06:32,148 p=113438 u=root n=ansible | changed: [ubuntu]
+2020-09-17 03:06:32,335 p=113438 u=root n=ansible | TASK [Copy tomcat configuration file from CentOS node to ACM] *******************************************************************************
+2020-09-17 03:06:36,106 p=113438 u=root n=ansible | fatal: [centos]: FAILED! => {"changed": false, "msg": "file not found: /etc/httpd/httpd.conf"}
+2020-09-17 03:06:36,125 p=113438 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 03:06:36,129 p=113438 u=root n=ansible | centos                     : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-09-17 03:06:36,130 p=113438 u=root n=ansible | ubuntu                     : ok=6    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-09-17 03:08:08,687 p=113672 u=root n=ansible | [WARNING]: file /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/common-tomcat-tasks.yml is empty and had no tasks to
+include
+
+2020-09-17 03:08:09,187 p=113672 u=root n=ansible | PLAY [Demonstrates invoking custom ansible role in a playbook] ******************************************************************************
+2020-09-17 03:08:09,306 p=113672 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 03:08:17,804 p=113672 u=root n=ansible | ok: [centos]
+2020-09-17 03:08:17,865 p=113672 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 03:08:18,300 p=113672 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/install-tomcat-centos.yml for centos
+2020-09-17 03:08:18,470 p=113672 u=root n=ansible | TASK [tomcat : Install Extra Packagest for Enterprise Linux (EPEL) in CentOS node] **********************************************************
+2020-09-17 03:08:45,787 p=113672 u=root n=ansible | ok: [centos]
+2020-09-17 03:08:45,848 p=113672 u=root n=ansible | TASK [tomcat : Install Apache tomact in CentOS node] ****************************************************************************************
+2020-09-17 03:09:14,192 p=113672 u=root n=ansible | ok: [centos]
+2020-09-17 03:09:14,327 p=113672 u=root n=ansible | TASK [tomcat : include] *********************************************************************************************************************
+2020-09-17 03:09:15,441 p=113672 u=root n=ansible | included: /root/Training/ansible-sep1418-2020/Day4/CustomRole/tomcat/tasks/configure-tomcat-centos.yml for centos
+2020-09-17 03:09:15,714 p=113672 u=root n=ansible | TASK [Copy tomcat configuration file from CentOS node to ACM] *******************************************************************************
+2020-09-17 03:09:20,044 p=113672 u=root n=ansible | changed: [centos]
+2020-09-17 03:09:20,064 p=113672 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 03:09:20,066 p=113672 u=root n=ansible | centos                     : ok=6    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
