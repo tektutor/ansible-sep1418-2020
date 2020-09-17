@@ -1,0 +1,10 @@
+[windows]
+win ansible_port=5986
+
+[windows:vars]
+ansible_user=test
+ansible_password=pass@word1
+ansible_connection=winrm
+ansible_host=10.1.0.228
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore

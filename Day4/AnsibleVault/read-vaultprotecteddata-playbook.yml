@@ -1,0 +1,9 @@
+- name: Demonstrates accessing vault protected data from playbook
+  hosts: localhost
+  vars_files:
+   - credentials.yml
+  tasks:
+    - name: Access protoected data
+      debug: msg="username is {{username}} and password is {{password}}"
+
+    - debug: msg="Admin username is {{admin_user}} and password is {{admin_pass}}"

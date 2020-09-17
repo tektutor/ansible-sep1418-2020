@@ -1,0 +1,28 @@
+2020-09-16 23:57:24,043 p=108935 u=root n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2020-09-16 23:57:25,522 p=108935 u=root n=ansible | PLAY [Demonstrates accessing vault protected data from playbook] ****************************************************************************
+2020-09-16 23:57:25,552 p=108935 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-16 23:57:32,275 p=108935 u=root n=ansible | ok: [localhost]
+2020-09-16 23:57:32,453 p=108935 u=root n=ansible | TASK [Access protoected data] ***************************************************************************************************************
+2020-09-16 23:57:32,843 p=108935 u=root n=ansible | ok: [localhost] => {
+    "msg": "username is devops and password is devops123"
+}
+2020-09-16 23:57:32,867 p=108935 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-16 23:57:32,869 p=108935 u=root n=ansible | localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-09-16 23:59:21,577 p=109057 u=root n=ansible | Decryption successful
+2020-09-17 00:03:01,551 p=109202 u=root n=ansible | Encryption successful
+2020-09-17 00:03:07,624 p=109211 u=root n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2020-09-17 00:03:09,268 p=109211 u=root n=ansible | PLAY [Demonstrates accessing vault protected data from playbook] ****************************************************************************
+2020-09-17 00:03:09,300 p=109211 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************
+2020-09-17 00:03:14,609 p=109211 u=root n=ansible | ok: [localhost]
+2020-09-17 00:03:14,665 p=109211 u=root n=ansible | TASK [Access protoected data] ***************************************************************************************************************
+2020-09-17 00:03:14,795 p=109211 u=root n=ansible | ok: [localhost] => {
+    "msg": "username is devops and password is devops123"
+}
+2020-09-17 00:03:14,847 p=109211 u=root n=ansible | TASK [debug] ********************************************************************************************************************************
+2020-09-17 00:03:15,093 p=109211 u=root n=ansible | ok: [localhost] => {
+    "msg": "Admin username is admin and password is admin123"
+}
+2020-09-17 00:03:15,110 p=109211 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************
+2020-09-17 00:03:15,111 p=109211 u=root n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
