@@ -1,6 +1,6 @@
 - name: Demonstrates invoking custom ansible role in a playbook
   hosts: all
   become: yes
-  become_method: su
+  become_method: sudo
   roles:
     - tomcat
