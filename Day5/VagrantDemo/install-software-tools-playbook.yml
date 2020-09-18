@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  vars:
+     - software_tools:
+           - default-jdk 
+           - maven
+           - net-tools
+           - tmux
+  tasks:
+     - name: install software tools
+       apt: name="{{item}}" state=latest update_cache=yes
+       with_list: "{{software_tools}}"

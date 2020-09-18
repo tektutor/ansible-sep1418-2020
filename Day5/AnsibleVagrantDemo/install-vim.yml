@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  vars:
+     - software_tools:
+           - vim
+           - tree
+           - net-tools
+           - tmux
+  tasks:
+     - name: install vim
+       apt: name="{{item}}" state=latest update_cache=yes
+       with_list: "{{software_tools}}"
