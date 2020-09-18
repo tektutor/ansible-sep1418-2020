@@ -1,0 +1,4 @@
+---
+# vars file for tomcat
+tektutor_provisioner_tool: VMWARE Workstation
+tektutor_conf_tool: Ansible

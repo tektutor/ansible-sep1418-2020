@@ -1,0 +1,5 @@
+- name: Create the custom web root folder
+  file: path="{{tektutor_document_root}}" state=directory mode=0755
+
+- name:  Deploy custom html page into tomcat server 
+  template: src=index.html.j2 dest="{{tektutor_document_root}}/index.html" mode=0777

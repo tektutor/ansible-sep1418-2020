@@ -1,0 +1,5 @@
+---
+# defaults file for tomcat
+tektutor_greeting_msg: DevOps!
+tektutor_document_home: /var/html
+tektutor_document_root: /var/html

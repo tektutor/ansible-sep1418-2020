@@ -1,0 +1,16 @@
+#- name: Check if httpd file already exists
+#  stat: path=tomcat/templates/httpd.conf
+#  delegate_to: localhost
+#  register: file_exists
+#  tags:
+#     - Check config files exists
+
+#- name: Copy the httpd.conf from CentOS node to ACM
+#  when: file_exists.stat.exists == false
+#  fetch: src=/etc/httpd/conf/httpd.conf dest=tomcat/templates/httpd.conf  flat=yes
+#  run_once: true
+
+- name: Configure the tomcat sites config with custom document root folder for CentOS node
+  template: src=httpd.conf dest=/etc/httpd/conf/httpd.conf 
+  notify:
+     - Restart tomcat in CentOS node

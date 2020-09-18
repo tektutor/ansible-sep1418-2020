@@ -1,6 +1,11 @@
 - name: This playbook will copy the git_ver.fact to ansible nodes
   hosts: localhost 
+  gather_facts: yes
   tasks:
+    - setup:
+      register: out
+
+    - debug: var=out
     - name: Create the facts folder in the node
       file: path=/etc/ansible/facts.d state=directory mode=0777
 
