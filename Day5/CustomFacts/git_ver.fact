@@ -1,0 +1,3 @@
+#!/bin/bash
+GIT_VER=`git --version`
+echo "{\"Git Version\": \"${GIT_VER}\"}"

@@ -1,0 +1,8 @@
+- name: Demonstrates use of sequence loop
+  hosts: localhost
+  tasks:
+    - debug: msg="{{item}}" 
+      with_sequence: start=1 end=10
+
+    - debug: msg="Item-{{item}}"
+      with_sequence: count=5 format="%03d"

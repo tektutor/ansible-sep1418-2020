@@ -1,0 +1,22 @@
+- name: Demonstrates use of block in playbook
+  hosts: localhost
+  tasks:
+  - name: Block demo 
+    block:
+     - name: Task1
+       command: /bin/true
+       register: output1
+   
+     - name: Task2
+       command: /bin/false
+       register: output2
+
+    rescue:
+      - debug: msg="Task1 failed"
+        when: output1.failed == true
+
+      - debug: msg="Inside rescue blocak - Task2 failed"
+        when: output2.failed == true
+
+    always:
+      - debug: msg="Do clean stuffs here irrespective success or failure."

@@ -1,0 +1,26 @@
+- name: Demonstrates use of dictionary in playbooks
+  hosts: localhost
+  vars:
+    my_env:
+      JAVA_HOME: /usr/lib/java/jdk1.8
+      M2_HOME: /usr/share/maven
+
+  vars_prompt:  
+   - name: JDK_PATH
+     prompt: "What is the path of your JDK?"
+     private: no
+
+   - name: root_password
+     prompt: "What is the root password?"
+     private: yes
+
+  tasks:
+    - name: Access dictionary items
+      debug: msg="{{item.key}} --> {{item.value}}"
+      with_dict: "{{my_env}}"
+
+    - debug: msg="{{JHOME}}"
+
+    - debug: msg="{{JDK_PATH}}"
+
+    - debug: msg="{{root_password}}"

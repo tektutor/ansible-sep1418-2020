@@ -1,0 +1,8 @@
+- name: This playbook will copy the git_ver.fact to ansible nodes
+  hosts: all
+  tasks:
+    - name: Create the facts folder in the node
+      file: path=/etc/ansible/facts.d state=directory mode=0777
+
+    - name: Copy the git_ver fact to node
+      copy: src=git_ver.fact dest=/etc/ansible/facts.d/git_ver.fact
